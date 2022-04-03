@@ -31,7 +31,7 @@ const Header = () => {
                     </>
                 ): (
                     <>
-                        <Link to="/profile">Profile</Link>
+                        <Link to="/profile/:id">Profile</Link>
                         <button onClick={logout}>Logout</button>
                     </>
                 )}

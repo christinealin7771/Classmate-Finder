@@ -1,9 +1,12 @@
-import React, {useState, useContext} from 'react'
-import { useEffect } from 'react'
+import React, {useState, useContext, useEffect} from 'react'
+// import { useEffect } from 'react'
 import './Login.css'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../AuthContext'
+import jwt_decode from "jwt-decode";
+
+ 
 
 
 const Login = () => {
@@ -16,6 +19,12 @@ const Login = () => {
   const[id, setId] = useState(0)
 
   const [allUsers, setallUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/users/all").then((response) => {
+      setallUsers(response.data);
+    });
+  }, []);
 
 
   const usernameHandler = (event) => {
@@ -39,23 +48,11 @@ const Login = () => {
       else {
         localStorage.setItem("accessToken", response.data)
         setAuthState(true)
-
-        /*trying to get the userid
-        axios.get('http://localhost:3001/users/all').then((response)=>{
-          setallUsers(response.data);
-         
-        })
-        {console.log(allUsers)}
-        {allUsers.map((value,key) => {
-          <div key ={key}>
-            
-            {username===value.username? setId(value.id): setAuthState(false)}
-    
-          </div>
-        })}
-        */
-
-        navigate(`/profile/${id}`, {replace: true});
+        const token = localStorage.getItem('accessToken')
+        const decoded = jwt_decode(token);
+        console.log(decoded.id)
+        navigate(`/profile/${decoded.id}`, {replace: true});
+        
       }
     })
 
