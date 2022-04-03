@@ -12,7 +12,7 @@ const Header = () => {
     const {setAuthState} = useContext(AuthContext)
 
     const logout = () => {
-        sessionStorage.removeItem("accessToken");
+        localStorage.removeItem("accessToken");
         setAuthState(false)
         navigate("/login", {replace: true});
     }
@@ -23,14 +23,17 @@ const Header = () => {
            
             <div className="links"> 
                 <Link to="/chat">Chat</Link>
-                <Link to="/profile">Profile</Link>
+                
                 {!authState ? (
                     <>
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Sign Up</Link>
                     </>
                 ): (
-                    <button onClick={logout}>Logout</button>
+                    <>
+                        <Link to="/profile">Profile</Link>
+                        <button onClick={logout}>Logout</button>
+                    </>
                 )}
                 
             </div>

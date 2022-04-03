@@ -12,6 +12,8 @@ const SignUp = () => {
   const initValue = {
     username: "",
     password: "",
+    name: "",
+    email: "",
   }
 
   const validSchema = Yup.object().shape({
@@ -37,6 +39,24 @@ const SignUp = () => {
         
         <Form className="formContainer">
         <h1>Sign Up</h1>
+          <label>Name: </label>
+          {/* <ErrorMessage name="username" component="span" /> */}
+          <Field
+            autocomplete = "off"
+            id="inputCreatePost"
+            name ="name"
+            placeholder = "First and Last Name"
+          />
+
+          <label>UFL Email: </label>
+          {/* <ErrorMessage name="username" component="span" /> */}
+          <Field
+            autocomplete = "off"
+            id="inputCreatePost"
+            name ="email"
+            placeholder = "john@ufl.edu"
+          />
+
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
           <Field

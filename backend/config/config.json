@@ -2,8 +2,8 @@
   "development": {
     "username": "root",
     "password": "teamtech",
-    "database": "node_classmate",
-    "host": "localhost",
+    "database": "classmate",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
