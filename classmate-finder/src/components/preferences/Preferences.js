@@ -1,14 +1,44 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {Navigate} from 'react-router-dom'
+//import { data } from '../data/data'
+import './AddPreferences.css'
 
-const Preferences = () => {
-  return (
-    <div>
-        <div>preference</div>
-        <div>1) Class Level</div>
-        <div>2) Class Year</div>
-        <div>3) Class Schedule</div>
+const AddPreferences = () => {
+  //let navigate = useNavigate();
+
+  const [grade, setGrade] = useState('')
+  const [major, setMajor] = useState('')
+  
+  
+  const gradeHandler = (event) => {
+    setGrade(event.target.value);
+  }
+
+  const majorHandler = (event) => {
+    setMajor(event.target.value);
+  }
+
+  /*const addPreferencesHandler = (event) => {
+    data.push({
+      major: major
+
+    })
+    navigate("../", ({replace:true}));
+  }*/
+
+  return(
+    <div className="Preference Form">
+        <h1 userName="academic Specific">Academic Specifics</h1>
+        <label>Class year </label>
+        <input onChange={gradeHandler}></input>
+        <div></div>
+        <label>Major </label>
+        <input onChange={majorHandler}></input>
+        <div></div>
+        
     </div>
   )
+
 }
 
-export default Preferences
+export default AddPreferences
