@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './Header.css'
 import { AuthContext } from '../AuthContext'
 import { useNavigate } from 'react-router-dom'
+import jwt_decode from "jwt-decode";
 
 
 
@@ -16,6 +17,14 @@ const Header = () => {
         setAuthState(false)
         navigate("/login", {replace: true});
     }
+
+    const profileClick = () => {
+        const token = localStorage.getItem('accessToken')
+        const decoded = jwt_decode(token);
+        navigate(`/profile/${decoded.id}`, {replace: true});
+    }
+   
+
 
     return (
         <div className = "header">
@@ -31,7 +40,9 @@ const Header = () => {
                     </>
                 ): (
                     <>
-                        <Link to="/profile/:id">Profile</Link>
+                       
+                        {/* <Link to="/profile/:id">Profile</Link> */}
+                        <a onClick ={profileClick}>Profile</a>
                         <button onClick={logout}>Logout</button>
                     </>
                 )}

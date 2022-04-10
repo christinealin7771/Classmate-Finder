@@ -4,6 +4,10 @@ import Profile from './components/user/Profile';
 import Chat from './components/communication/Chat';
 import Login from './components/user/Login';
 import SignUp from './components/user/SignUp';
+import ChangePassword from './components/user/ChangePassword';
+import ChangeUsername from './components/user/ChangeUsername';
+import ChangeEmail from './components/user/ChangeEmail';
+
 import { AuthContext } from './AuthContext';
 import { useState, useEffect } from 'react';
 
@@ -27,6 +31,9 @@ function App() {
        <Routes>
          <Route path="/chat" element={<Chat/>}></Route>
          <Route path="/profile/:id" element={<Profile/>}></Route>
+         <Route path="/changepassword" element={<ChangePassword/>}></Route>
+         <Route path="/changeusername" element={<ChangeUsername/>}></Route>
+         <Route path="/changeemail" element={<ChangeEmail/>}></Route>
          <Route path="/login" element={<Login/>}></Route>
          <Route path="/signup" element={<SignUp/>}></Route>
        </Routes>

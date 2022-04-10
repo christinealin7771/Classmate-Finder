@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router()
 const {Users} = require("../models")
 const bcrypt = require("bcrypt");
+const { validateToken } = require("../middlewares/AuthMiddleware");
 
 const {sign } = require('jsonwebtoken')
 
@@ -62,6 +63,35 @@ router.get("/basicinfo/:id", async(req,res)=> {
 })
 
 
+router.put('/changepassword', validateToken, async (req,res) => {
+    const {currentPassword, newPassword} = req.body
+    const user = await Users.findOne({where: {username: req.user.username}});
+    bcrypt.compare(currentPassword, user.password).then((match) => {
+        if (!match){
+            res.json({ error: "Current Password is Wrong" });
+        } 
+        else {
+            bcrypt.hash(newPassword, 10).then((hash)=> {
+                Users.update({password: hash}, {where: {username: req.user.username}})
+                res.json("Success");
+            })
+        }
+       
+
+    });
+})
+
+router.put('/changeusername', validateToken, async(req,res)=> {
+    const {newUsername} = req.body
+    Users.update({username: newUsername}, {where: {username: req.user.username}})
+    res.json(newUsername)
+})
+
+router.put('/changeEmail', validateToken, async(req,res) => {
+    const {newEmail} = req.body
+    Users.update({email: newEmail}, {where: {username: req.user.username}})
+    res.json(newEmail)
+})
 
 
 module.exports = router
