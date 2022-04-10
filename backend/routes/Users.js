@@ -93,5 +93,11 @@ router.put('/changeEmail', validateToken, async(req,res) => {
     res.json(newEmail)
 })
 
+router.delete("/deleteUser/:id", validateToken, async (req,res) => {
+    const userId = req.params.id
+    Users.destroy({where: {id: userId}})
+    res.json("Deleted Successfully")
+})
+
 
 module.exports = router

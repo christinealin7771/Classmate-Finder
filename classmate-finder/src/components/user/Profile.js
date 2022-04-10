@@ -4,11 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import './Profile.css'
 import { AuthContext } from '../../AuthContext'
 
+
 import axios from 'axios'
 
 const Profile = () => {
   let navigate = useNavigate()
   let {id} = useParams();
+  const {setAuthState} = useContext(AuthContext)
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("")
@@ -22,6 +24,21 @@ const Profile = () => {
     })
   }, [])
 
+  const deleteAccount = () => {
+    axios.delete(`http://localhost:3001/users/deleteUser/${id}`, {
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    }).then((response)=> {
+      if(response.data.error)
+      {
+        alert(response.data.error)
+      }
+      localStorage.removeItem("accessToken");
+      setAuthState(false)
+      navigate("/login", {replace: true});
+    
+    })
+  }
+
   return (
     <div className="profile">
       <h1>Hello {name}</h1>
@@ -33,6 +50,8 @@ const Profile = () => {
         <h3>Email: {email}</h3>
         <button onClick={() => {navigate("/changeemail", {replace:true})}}>Change Username</button>
       </div>
+
+      <button onClick ={deleteAccount}>Delete Account</button>
       
     </div>
   )
