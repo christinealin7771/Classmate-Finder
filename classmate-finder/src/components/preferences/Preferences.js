@@ -1,17 +1,29 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from "yup"
 import './Preferences.css'
-//import { data } from '../data/data'
+import FormikControl from './FormikControl'
 
 const Preferences = () => {
 
   let navigate = useNavigate();
 
+  const initialValues = {
+    year: "",
+    major: "",
+    studyHabit: "",
+    personality: "",
+    studyTime: "",
+  };
+
   const [year, setYear] = useState("")
   const [major, setMajor] = useState("")
   const [studyHabit, setStudyHabit] = useState("") 
   const [personality, setPersonality] = useState("")
+  const [studyTime, setStudyTime] = useState("")
+
 
   const yearHandler = (event) => {
     setYear(event.target.value)
@@ -29,7 +41,27 @@ const Preferences = () => {
     setPersonality(event.tagert.value)
   }
 
-  const addPreferenceHandler = (data) => {
+  const studyTimeHandler = (event) => {
+    setPersonality(event.tagert.value)
+  }
+
+  const validationSchema = Yup.object().shape({
+    year: Yup.string().required('Required'),
+    major: Yup.string().required('Required'),
+    studyHabit:Yup.string().required('Required'),
+    personality:Yup.string().required('Required'),
+    studyTime:Yup.string().required('Required')
+
+  })
+
+  const onSubmit = () => {
+    const data ={
+      year: year,
+      major: major,
+      personality: personality,
+      studyHabit: studyHabit,
+      studyTime: studyTime
+    }
     axios.post("http://localhost:3001/preferences", data).then(() => {
       console.log(data);
       navigate("../", ({replace: true}));
@@ -40,8 +72,9 @@ const Preferences = () => {
 
   return(
     <div className="preferenceForm">
+
     <form> 
-        <h1 userName="academic Specific">Academic Specifics</h1>
+        <h1 userName="preference">Preference Form</h1>
         <label for="year">Class year: </label>
         <select 
           name="year" 
@@ -188,7 +221,7 @@ const Preferences = () => {
         <br></br>
         <br></br>
         <label for="study-habits">Study Habits: How much before a test do you start studying for it? </label>
-        <select name="study-habits" id="study-habits"> onChange={studyHabit}
+        <select name="study-habits" id="study-habits"> onChange={studyHabitHandler} 
           <option label=" "></option>
           <option value="worst">I don't study </option>
           <option value="bad">The day before or the day of the test.</option>
@@ -221,10 +254,29 @@ const Preferences = () => {
         <br></br>
         <br></br>
 
+        <label for="study-time"> Study Time: </label>
+        <select 
+          name="study-time" 
+          id="study-time" 
+          onChange={studyTimeHandler}
+        > 
+          <option label=" "> </option>
+          <option value="no-preferenece"> No preference</option>
+          <option value="early morning"> early morning (~5am-8am)</option>
+          <option value="morning"> morning (~8am-11am) </option>
+          <option value="noon"> noon (~11am-2pm)</option>
+          <option value="afternoon"> afternoon (~2pm-5pm) </option>
+          <option value="evening"> early evening (~5pm-8pm) </option>
+          <option value="late-evening"> late-evening (~8pm-11pm)</option>
+          <option value="midnight"> midnight (~11pm-2am) </option>
+          <option value="past-midnight"> past midngiht (~2am-5am) </option>
+        </select>
+
         </form>
+        <br></br>
+        <br></br> 
 
-        <button onClick={addPreferenceHandler}>Submit Preference Form</button>
-
+        <button onClick={onSubmit}>Update Preference</button>
     </div>
   )
 

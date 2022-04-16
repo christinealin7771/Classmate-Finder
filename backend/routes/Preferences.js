@@ -9,9 +9,16 @@ const { Preferences } = require('../models');
 });
 
 router.post("/", async (req, res) => {
-    const preference = req.body
-    await Preferences.create(preference);
-    res.json(preference);
+    const {year, major, pType, studyHabbits, studyTime} = req.body;
+    Preferences.create({
+        year: year,
+        major: major,
+        pType: pType,
+        studyHabbits: studyHabbits,
+        studyTime: studyTime
+    })
+    
+    res.json("Success");
 });
 
 module.exports = router;

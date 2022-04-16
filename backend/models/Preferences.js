@@ -1,14 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
     const Preferences = sequelize.define("Preferences", {
-      user: {
+      // user: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
+      year: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       major: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      year: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -23,34 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       timeStudy: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      course1: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      course2: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      course3: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      course4: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      course5: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      course6: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      course7: {
-        type: DataTypes.STRING,
-        allowNull: true,
       },
     });
   
