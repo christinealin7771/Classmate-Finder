@@ -2,20 +2,20 @@ const express = require('express')
 const router = express.Router()
 const { Preferences } = require('../models');
 
-router.get("/", async (req, res) =>{
+router.get("/all", async (req, res) =>{
 const { Preferences } = require('../models');
     const listOfPreferences = await Preferences.findAll()
     res.json(listOfPreferences);
 });
 
 router.post("/", async (req, res) => {
-    const {year, major, personality, studyHabbits, studyTime} = req.body;
+    const {year, major, personality, studyHabit, timeStudy} = req.body;
     Preferences.create({
         year: year,
         major: major,
         personality: personality,
-        studyHabbits: studyHabbits,
-        studyTime: studyTime
+        studyHabit: studyHabit,
+        timeStudy: timeStudy
     })
     
     res.json("Success");

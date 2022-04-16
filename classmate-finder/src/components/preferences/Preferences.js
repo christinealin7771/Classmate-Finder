@@ -8,19 +8,11 @@ const Preferences = () => {
 
   let navigate = useNavigate();
 
-  const initialValues = {
-    year: "",
-    major: "",
-    studyHabit: "",
-    personality: "",
-    studyTime: "",
-  };
-
   const [year, setYear] = useState("")
   const [major, setMajor] = useState("")
   const [studyHabit, setStudyHabit] = useState("") 
   const [personality, setPersonality] = useState("")
-  const [studyTime, setStudyTime] = useState("")
+  const [timeStudy, setStudyTime] = useState("")
 
 
   const yearHandler = (event) => {
@@ -36,35 +28,27 @@ const Preferences = () => {
   }
   
   const personalityHandler = (event) => {
-    setPersonality(event.tagert.value)
+    setPersonality(event.target.value)
   }
 
   const studyTimeHandler = (event) => {
-    setStudyTime(event.tagert.value)
+    setStudyTime(event.target.value)
   }
-
-  const validationSchema = Yup.object().shape({
-    year: Yup.string().required('Required'),
-    major: Yup.string().required('Required'),
-    studyHabit:Yup.string().required('Required'),
-    personality:Yup.string().required('Required'),
-    studyTime:Yup.string().required('Required')
-
-  })
 
   const onSubmit = () => {
     console.log(studyHabit);
     console.log(year);
     console.log(personality)
     console.log(major)
-    console.log(studyTime)
+    console.log(timeStudy)
     const data ={
       year: year,
       major: major,
       personality: personality,
       studyHabit: studyHabit,
-      studyTime: studyTime
+      timeStudy: timeStudy
     }
+    console.log(data);
     axios.post("http://localhost:3001/preferences", data).then(() => {
       console.log(data);
       navigate("/", ({replace: true}));
