@@ -1,4 +1,6 @@
 import './App.css';
+import React from 'react'
+import axios from "axios"; 
 import Header from './components/Header';
 import Profile from './components/user/Profile';
 import Chat from './components/communication/Chat';
