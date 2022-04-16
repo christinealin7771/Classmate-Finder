@@ -1,9 +1,13 @@
 import React, {useState} from 'react'
-import {Navigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import axios from "axios"
 import './Preferences.css'
 //import { data } from '../data/data'
 
 const Preferences = () => {
+
+  let navigate = useNavigate();
+
   const [year, setYear] = useState("")
   const [major, setMajor] = useState("")
   const [studyHabit, setStudyHabit] = useState("") 
@@ -23,6 +27,14 @@ const Preferences = () => {
   
   const personalityHandler = (event) => {
     setPersonality(event.tagert.value)
+  }
+
+  const addPreferenceHandler = (data) => {
+    axios.post("http://localhost:3001/preferences", data).then(() => {
+      console.log(data);
+      navigate("../", ({replace: true}));
+    })
+    
   }
 
 
@@ -47,6 +59,7 @@ const Preferences = () => {
         <br></br>
         <label for="major">Major: </label>
         <select name="major" id="major"> 
+          onChange={majorHandler}
           <option label=" "></option>
           <option value="accounting"> Accounting</option>
           <option value="advertising"> Advertising</option>
@@ -175,7 +188,7 @@ const Preferences = () => {
         <br></br>
         <br></br>
         <label for="study-habits">Study Habits: How much before a test do you start studying for it? </label>
-        <select name="study-habits" id="study-habits"> 
+        <select name="study-habits" id="study-habits"> onChange={studyHabit}
           <option label=" "></option>
           <option value="worst">I don't study </option>
           <option value="bad">The day before or the day of the test.</option>
@@ -209,6 +222,9 @@ const Preferences = () => {
         <br></br>
 
         </form>
+
+        <button onClick={addPreferenceHandler}>Submit Preference Form</button>
+
     </div>
   )
 
