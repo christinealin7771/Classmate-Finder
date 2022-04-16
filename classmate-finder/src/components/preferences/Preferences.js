@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
 import {Navigate} from 'react-router-dom'
+import './Preferences.css'
 //import { data } from '../data/data'
 
 const Preferences = () => {
   const [year, setYear] = useState("")
   const [major, setMajor] = useState("")
+  const [studyHabit, setStudyHabit] = useState("") 
+  const [personality, setPersonality] = useState("")
 
   const yearHandler = (event) => {
     setYear(event.target.value)
@@ -14,9 +17,17 @@ const Preferences = () => {
     setMajor(event.target.value)
   }
 
+  const studyHabitHandler = (event) => {
+    setStudyHabit(event.target.value)
+  }
+  
+  const personalityHandler = (event) => {
+    setPersonality(event.tagert.value)
+  }
+
 
   return(
-    <div className="Preference Form">
+    <div className="preferenceForm">
     <form> 
         <h1 userName="academic Specific">Academic Specifics</h1>
         <label for="year">Class year: </label>
@@ -172,6 +183,31 @@ const Preferences = () => {
           <option value="good"> The week before a test.</option>
           <option value="best"> Weeks in advance.</option>     
         </select>
+
+        <br></br>
+        <br></br>
+
+        <label for="personality">Personality: </label>
+        <select 
+          name="personality" 
+          id="personality " 
+          onChange={personalityHandler}
+        > 
+          <option label=" "> </option>
+          <option value="no-preferenece"> No preference</option>
+          <option value="extremely-introverted"> Extremely introverted</option>
+          <option value="very-introvreted"> Very introverted</option>
+          <option value="introverted"> Introverted</option>
+          <option value="slightly-introverted"> Slightly introverted</option>
+          <option value="neutral"> Neutral</option>
+          <option value="slightly-extroverted"> Slightly extroverted</option>
+          <option value="extroverted"> Extroverted</option>
+          <option value="very-extroverted"> Very extroverted</option>
+          <option value="extremely-extroverted"> Extremely extroverted</option> 
+        </select>
+        <br></br>
+        <br></br>
+
         </form>
     </div>
   )

@@ -6,7 +6,7 @@ app.use(express.json());
 const db = require('./models')
 
 // Routers
-const preferenecRouter = require('./routes/Preferences');
+const preferenceRouter = require('./routes/Preferences');
 app.use("/preferences", preferenceRouter);
 
 db.sequelize.sync().then(() => {
