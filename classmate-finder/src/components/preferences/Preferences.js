@@ -40,7 +40,7 @@ const Preferences = () => {
   }
 
   const studyTimeHandler = (event) => {
-    setPersonality(event.tagert.value)
+    setStudyTime(event.tagert.value)
   }
 
   const validationSchema = Yup.object().shape({
@@ -53,6 +53,11 @@ const Preferences = () => {
   })
 
   const onSubmit = () => {
+    console.log(studyHabit);
+    console.log(year);
+    console.log(personality)
+    console.log(major)
+    console.log(studyTime)
     const data ={
       year: year,
       major: major,
@@ -62,7 +67,8 @@ const Preferences = () => {
     }
     axios.post("http://localhost:3001/preferences", data).then(() => {
       console.log(data);
-      navigate("../", ({replace: true}));
+      navigate("/", ({replace: true}));
+      
     })
     
   }
@@ -89,8 +95,7 @@ const Preferences = () => {
         <br></br>
         <br></br>
         <label for="major">Major: </label>
-        <select name="major" id="major"> 
-          onChange={majorHandler}
+        <select name="major" id="major" onChange={majorHandler}> 
           <option label=" "></option>
           <option value="accounting"> Accounting</option>
           <option value="advertising"> Advertising</option>
@@ -219,7 +224,7 @@ const Preferences = () => {
         <br></br>
         <br></br>
         <label for="study-habits">Study Habits: How much before a test do you start studying for it? </label>
-        <select name="study-habits" id="study-habits"> onChange={studyHabitHandler} 
+        <select name="study-habits" id="study-habits" onChange={studyHabitHandler} >
           <option label=" "></option>
           <option value="worst">I don't study </option>
           <option value="bad">The day before or the day of the test.</option>
@@ -234,7 +239,7 @@ const Preferences = () => {
         <label for="personality">Personality: </label>
         <select 
           name="personality" 
-          id="personality " 
+          id="personality" 
           onChange={personalityHandler}
         > 
           <option label=" "> </option>
@@ -270,7 +275,7 @@ const Preferences = () => {
           <option value="past-midnight"> past midngiht (~2am-5am) </option>
         </select>
 
-        </form>
+      </form>
         <br></br>
         <br></br> 
 

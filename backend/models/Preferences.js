@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      studyHabbit: {
+      studyHabit: {
         type: DataTypes.STRING,
         allowNull: false,
       },
