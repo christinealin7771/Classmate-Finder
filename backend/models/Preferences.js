@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      pType: {
+      personality: {
         type: DataTypes.STRING,
         allowNull: false,
       },

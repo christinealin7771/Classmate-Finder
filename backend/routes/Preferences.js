@@ -9,11 +9,11 @@ const { Preferences } = require('../models');
 });
 
 router.post("/", async (req, res) => {
-    const {year, major, pType, studyHabbits, studyTime} = req.body;
+    const {year, major, personality, studyHabbits, studyTime} = req.body;
     Preferences.create({
         year: year,
         major: major,
-        pType: pType,
+        personality: personality,
         studyHabbits: studyHabbits,
         studyTime: studyTime
     })
