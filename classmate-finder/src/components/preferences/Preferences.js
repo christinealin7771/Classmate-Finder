@@ -2,17 +2,29 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
 import './Preferences.css'
+import { useParams } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'; 
 
 const Preferences = () => {
 
   let navigate = useNavigate();
+  let {id} = useParams(); 
+ 
+  
 
-  const [name, setName] = useState("")
-  const [year, setYear] = useState("")
-  const [major, setMajor] = useState("")
-  const [studyHabit, setStudyHabit] = useState("") 
-  const [personality, setPersonality] = useState("")
-  const [timeStudy, setStudyTime] = useState("")
+  const [name, setName] = useState("");
+  const [year, setYear] = useState("");
+  const [major, setMajor] = useState("");
+  const [studyHabit, setStudyHabit] = useState("");
+  const [personality, setPersonality] = useState("");
+  const [timeStudy, setStudyTime] = useState("");
+
+  /*
+  useEffect(() => {
+    axios.get(`http://localhost:3001/users/basicinfo/${id}`).then((response)=>{
+      setUsername(response.data.username);
+    })
+  }, [])*/
 
   const nameHandler = (event) => {
     setName(event.target.value)
@@ -39,7 +51,10 @@ const Preferences = () => {
   }
 
   const onSubmit = () => {
+    //const token = localStorage.getItem('accessToken'); 
+    /////const decoded = jwt_decode(token);
     const data = {
+      //username: decoded.id, 
       name: name,
       year: year,
       major: major,
@@ -51,7 +66,6 @@ const Preferences = () => {
     axios.post("http://localhost:3001/preferences", data).then(() => {
       console.log(data);
       navigate("/", ({replace: true}));
-      
     })
     
   }

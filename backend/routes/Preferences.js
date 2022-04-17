@@ -14,8 +14,9 @@ router.get("byId/:id", async (req,res) => {
 }); 
 
 router.post("/", async (req, res) => {
-    const {name, year, major, personality, studyHabit, timeStudy} = req.body;
+    const {username, name, year, major, personality, studyHabit, timeStudy} = req.body;
     Preferences.create({
+        username: name, 
         name: name,
         year: year,
         major: major,
