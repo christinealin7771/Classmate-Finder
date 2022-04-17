@@ -51,10 +51,10 @@ const Preferences = () => {
   }
 
   const onSubmit = () => {
-    //const token = localStorage.getItem('accessToken'); 
-    /////const decoded = jwt_decode(token);
+    const token = localStorage.getItem('accessToken'); 
+    const decoded = jwt_decode(token);
     const data = {
-      //username: decoded.id, 
+      username: decoded.id, 
       name: name,
       year: year,
       major: major,

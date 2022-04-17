@@ -26,8 +26,7 @@ export default function MatcheList() {
   useEffect(() => {
     console.log("hitttt"); 
     axios.get("http://localhost:3001/prefereneces").then((response) => {
-      
-    console.log("hittsssssttt"); 
+
       setAllPreferences(response.data); 
       var length = allPreferences.length; 
       for (var i = 0; i <length; i++) {
@@ -37,16 +36,16 @@ export default function MatcheList() {
           length--; 
           continue; 
         }
-        if (parseInt(allPreferences[i].year.charAt(0)) != 0) {
+        if (parseInt(allPreferences[i].year.charAt(0)) !== 0) {
           sum += Math.abs((year - parseInt(allPreferences[i].year.charAt(0))));
         }
-        if (parseInt(allPreferences[i].personality.charAt(0)) != 0) {
+        if (parseInt(allPreferences[i].personality.charAt(0)) !== 0) {
           sum += Math.abs((personality - parseInt(allPreferences[i].personality.charAt(0))));
         }
-        if (parseInt(allPreferences[i].studyHabit.charAt(0)) != 0) {
+        if (parseInt(allPreferences[i].studyHabit.charAt(0)) !== 0) {
           sum += Math.abs((studyHabit - parseInt(allPreferences[i].studyHabit.charAt(0))));
         }
-        if (parseInt(allPreferences[i].studyTime.charAt(0)) != 0) {
+        if (parseInt(allPreferences[i].studyTime.charAt(0)) !== 0) {
           sum += Math.abs((studyTime - parseInt(allPreferences[i].studyTime.charAt(0))));
         }
         allPreferences[i].matchScore = sum; 
