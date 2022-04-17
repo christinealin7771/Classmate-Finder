@@ -23,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: models.Post,
+                model: 'Posts',
                 key: 'postid' 
             }
         }, 
-    })
+    }, {timestamps: false})
 
     //associating a table to another, a user can have multiple posts
     // Users.associate = (models) => {

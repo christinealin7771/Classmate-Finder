@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         }
-    })
+    }, {timestamps: false})
 
     //associating a table to another, a user can have multiple posts
     // Users.associate = (models) => {

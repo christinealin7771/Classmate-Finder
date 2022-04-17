@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Post = sequelize.define("Post", {
+    const Posts = sequelize.define("Posts", {
         postid: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -36,5 +36,5 @@ module.exports = (sequelize, DataTypes) => {
   //     onDelete: "cascade",
   //   });
   // };
-    return Post;
+    return Posts;
 }
