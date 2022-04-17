@@ -1,13 +1,23 @@
 import React, {useState} from 'react'
-import {Navigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import axios from "axios"
+import * as Yup from "yup"
 import './Preferences.css'
-//import { data } from '../data/data'
 
 const Preferences = () => {
+
+  let navigate = useNavigate();
+
+  const [name, setName] = useState("")
   const [year, setYear] = useState("")
   const [major, setMajor] = useState("")
   const [studyHabit, setStudyHabit] = useState("") 
   const [personality, setPersonality] = useState("")
+  const [timeStudy, setStudyTime] = useState("")
+
+  const nameHandler = (event) => {
+    setName(event.target.value)
+  }
 
   const yearHandler = (event) => {
     setYear(event.target.value)
@@ -22,14 +32,46 @@ const Preferences = () => {
   }
   
   const personalityHandler = (event) => {
-    setPersonality(event.tagert.value)
+    setPersonality(event.target.value)
+  }
+
+  const studyTimeHandler = (event) => {
+    setStudyTime(event.target.value)
+  }
+
+  const onSubmit = () => {
+    console.log(studyHabit);
+    console.log(year);
+    console.log(personality)
+    console.log(major)
+    console.log(timeStudy)
+    const data ={
+      name: name,
+      year: year,
+      major: major,
+      personality: personality,
+      studyHabit: studyHabit,
+      timeStudy: timeStudy
+    }
+    console.log(data);
+    axios.post("http://localhost:3001/preferences", data).then(() => {
+      console.log(data);
+      navigate("/", ({replace: true}));
+      
+    })
+    
   }
 
 
   return(
     <div className="preferenceForm">
+
     <form> 
-        <h1 userName="academic Specific">Academic Specifics</h1>
+        <h1 userName="preference">Preference Form</h1>
+        <label for="name">Name</label>
+        <input type="text" onChange={nameHandler} placeholder="(first and last name)"></input>
+        <br></br>
+        <br></br>
         <label for="year">Class year: </label>
         <select 
           name="year" 
@@ -46,7 +88,7 @@ const Preferences = () => {
         <br></br>
         <br></br>
         <label for="major">Major: </label>
-        <select name="major" id="major"> 
+        <select name="major" id="major" onChange={majorHandler}> 
           <option label=" "></option>
           <option value="accounting"> Accounting</option>
           <option value="advertising"> Advertising</option>
@@ -175,7 +217,7 @@ const Preferences = () => {
         <br></br>
         <br></br>
         <label for="study-habits">Study Habits: How much before a test do you start studying for it? </label>
-        <select name="study-habits" id="study-habits"> 
+        <select name="study-habits" id="study-habits" onChange={studyHabitHandler} >
           <option label=" "></option>
           <option value="worst">I don't study </option>
           <option value="bad">The day before or the day of the test.</option>
@@ -190,7 +232,7 @@ const Preferences = () => {
         <label for="personality">Personality: </label>
         <select 
           name="personality" 
-          id="personality " 
+          id="personality" 
           onChange={personalityHandler}
         > 
           <option label=" "> </option>
@@ -208,7 +250,29 @@ const Preferences = () => {
         <br></br>
         <br></br>
 
-        </form>
+        <label for="study-time"> Study Time: </label>
+        <select 
+          name="study-time" 
+          id="study-time" 
+          onChange={studyTimeHandler}
+        > 
+          <option label=" "> </option>
+          <option value="no-preferenece"> No preference</option>
+          <option value="early morning"> early morning (~5am-8am)</option>
+          <option value="morning"> morning (~8am-11am) </option>
+          <option value="noon"> noon (~11am-2pm)</option>
+          <option value="afternoon"> afternoon (~2pm-5pm) </option>
+          <option value="evening"> early evening (~5pm-8pm) </option>
+          <option value="late-evening"> late-evening (~8pm-11pm)</option>
+          <option value="midnight"> midnight (~11pm-2am) </option>
+          <option value="past-midnight"> past midngiht (~2am-5am) </option>
+        </select>
+
+      </form>
+        <br></br>
+        <br></br> 
+
+        <button onClick={onSubmit}>Update Preference</button>
     </div>
   )
 

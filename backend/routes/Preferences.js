@@ -2,7 +2,12 @@ const express = require('express')
 const router = express.Router()
 const { Preferences } = require('../models');
 
+<<<<<<< HEAD
 router.get("/", async (req, res) =>{
+=======
+router.get("/all", async (req, res) =>{
+const { Preferences } = require('../models');
+>>>>>>> manz
     const listOfPreferences = await Preferences.findAll()
     res.json(listOfPreferences);
 });
@@ -14,9 +19,17 @@ router.get("byId/:id", async (req,res) => {
 }); 
 
 router.post("/", async (req, res) => {
-    const preference = req.body
-    await Preferences.create(preference);
-    res.json(preference);
+    const {name, year, major, personality, studyHabit, timeStudy} = req.body;
+    Preferences.create({
+        name: name,
+        year: year,
+        major: major,
+        personality: personality,
+        studyHabit: studyHabit,
+        timeStudy: timeStudy
+    })
+    
+    res.json("Success");
 });
 
 module.exports = router;
