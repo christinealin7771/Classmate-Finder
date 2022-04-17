@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Profile from './components/user/Profile';
 import Chat from './components/communication/Chat';
 import Preferences from './components/preferences/Preferences';
+import MatchesList from './components/matches/MatchesList'
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -19,6 +20,7 @@ function App() {
          <Route path="/chat" element={<Chat/>}></Route>
          <Route path="/profile" element={<Profile/>}></Route>
          <Route path="/preferences" element={<Preferences/>}></Route>
+         <Route path="/matchesList" element={<MatchesList/>}></Route>
        </Routes>
      </Router>
    

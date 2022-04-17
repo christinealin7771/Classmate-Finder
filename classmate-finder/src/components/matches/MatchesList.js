@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { useParams } from 'react-router-dom';
 import axios from "axios"
 
 export default function MatcheList() {
@@ -12,27 +13,53 @@ export default function MatcheList() {
   const [studyTime, setStudyTime] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/prefereneces/all").then((response) => {
-      setAllPreferences(response.data)
-    });
-  }, []); 
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/preferenecs/byId/${id}").then((response) => {
+    axios.get('http://localhost:3001/preferenecs/byId/${id}').then((response) => {
       setMajor(response.data.major); 
-      setYear(response.data.year); 
+      setYear(parseInt(response.data.year.charAt(0))); 
       setPersonality(response.data.personality); 
       setStudyHabit(response.data.studyHabit); 
       setStudyTime(response.data.studyTime); 
     })
+  }, [])
+
+  useEffect(() => {
+    console.log("hitttt"); 
+    axios.get("http://localhost:3001/prefereneces").then((response) => {
+      
+    console.log("hittsssssttt"); 
+      setAllPreferences(response.data); 
+      var length = allPreferences.length; 
+      for (var i = 0; i <length; i++) {
+        var sum = 0; 
+        if (allPreferences[i].major !== major) {
+          allPreferences.splice(i,1); 
+          length--; 
+          continue; 
+        }
+        sum += Math.abs((year - parseInt(allPreferences[i].year.charAt(0))));
+        sum += Math.abs((personality - parseInt(allPreferences[i].personality.charAt(0)))); 
+        sum += Math.abs((studyHabit - parseInt(allPreferences[i].studyHabit.charAt(0)))); 
+        sum += Math.abs((studyTime - parseInt(allPreferences[i].studyTime.charAt(0))));
+    
+        allPreferences[i].correspondingScore = sum; 
+        console.log(sum); 
+      }
+      
+
+
+    });
   }, []); 
+; 
 
   
 
+  
   return (
     <div>
       {
-        allPrefrences
+        allPreferences.map(matche => {
+        //  return <Match key={matche.id} match={match} />
+        })
       }
     </div>
     

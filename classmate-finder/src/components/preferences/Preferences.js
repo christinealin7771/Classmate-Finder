@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
-import * as Yup from "yup"
 import './Preferences.css'
 
 const Preferences = () => {
@@ -40,12 +39,7 @@ const Preferences = () => {
   }
 
   const onSubmit = () => {
-    console.log(studyHabit);
-    console.log(year);
-    console.log(personality)
-    console.log(major)
-    console.log(timeStudy)
-    const data ={
+    const data = {
       name: name,
       year: year,
       major: major,
@@ -61,7 +55,6 @@ const Preferences = () => {
     })
     
   }
-
 
   return(
     <div className="preferenceForm">
@@ -79,11 +72,11 @@ const Preferences = () => {
           onChange={yearHandler}
         > 
           <option label=" "></option>
-          <option value="freshman"> Freshman (1st year)</option>
-          <option value="sophomore"> Sophomore (2nd year)</option>
-          <option value="junior"> Junior (3rd year)</option>
-          <option value="senior"> Senior (4th year)</option>
-          <option value="super-senior"> Super-senior (4th year+)</option>
+          <option value="1freshman"> Freshman (1st year)</option>
+          <option value="2sophomore"> Sophomore (2nd year)</option>
+          <option value="3junior"> Junior (3rd year)</option>
+          <option value="4senior"> Senior (4th year)</option>
+          <option value="5super-senior"> Super-senior (4th year+)</option>
         </select>
         <br></br>
         <br></br>
@@ -219,11 +212,11 @@ const Preferences = () => {
         <label for="study-habits">Study Habits: How much before a test do you start studying for it? </label>
         <select name="study-habits" id="study-habits" onChange={studyHabitHandler} >
           <option label=" "></option>
-          <option value="worst">I don't study </option>
-          <option value="bad">The day before or the day of the test.</option>
-          <option value="mid"> The week of the test. </option>
-          <option value="good"> The week before a test.</option>
-          <option value="best"> Weeks in advance.</option>     
+          <option value="1worst">I don't study </option>
+          <option value="2bad">The day before or the day of the test.</option>
+          <option value="3mid"> The week of the test. </option>
+          <option value="4good"> The week before a test.</option>
+          <option value="5best"> Weeks in advance.</option>     
         </select>
 
         <br></br>
@@ -236,16 +229,16 @@ const Preferences = () => {
           onChange={personalityHandler}
         > 
           <option label=" "> </option>
-          <option value="no-preferenece"> No preference</option>
-          <option value="extremely-introverted"> Extremely introverted</option>
-          <option value="very-introvreted"> Very introverted</option>
-          <option value="introverted"> Introverted</option>
-          <option value="slightly-introverted"> Slightly introverted</option>
-          <option value="neutral"> Neutral</option>
-          <option value="slightly-extroverted"> Slightly extroverted</option>
-          <option value="extroverted"> Extroverted</option>
-          <option value="very-extroverted"> Very extroverted</option>
-          <option value="extremely-extroverted"> Extremely extroverted</option> 
+          <option value="0no-preferenece"> No preference</option>
+          <option value="1extremely-introverted"> Extremely introverted</option>
+          <option value="2very-introvreted"> Very introverted</option>
+          <option value="3introverted"> Introverted</option>
+          <option value="4slightly-introverted"> Slightly introverted</option>
+          <option value="5neutral"> Neutral</option>
+          <option value="6slightly-extroverted"> Slightly extroverted</option>
+          <option value="7extroverted"> Extroverted</option>
+          <option value="8very-extroverted"> Very extroverted</option>
+          <option value="9extremely-extroverted"> Extremely extroverted</option> 
         </select>
         <br></br>
         <br></br>
@@ -257,15 +250,15 @@ const Preferences = () => {
           onChange={studyTimeHandler}
         > 
           <option label=" "> </option>
-          <option value="no-preferenece"> No preference</option>
-          <option value="early morning"> early morning (~5am-8am)</option>
-          <option value="morning"> morning (~8am-11am) </option>
-          <option value="noon"> noon (~11am-2pm)</option>
-          <option value="afternoon"> afternoon (~2pm-5pm) </option>
-          <option value="evening"> early evening (~5pm-8pm) </option>
-          <option value="late-evening"> late-evening (~8pm-11pm)</option>
-          <option value="midnight"> midnight (~11pm-2am) </option>
-          <option value="past-midnight"> past midngiht (~2am-5am) </option>
+          <option value="0no-preferenece"> No preference</option>
+          <option value="1early morning"> early morning (~5am-8am)</option>
+          <option value="2morning"> morning (~8am-11am) </option>
+          <option value="3noon"> noon (~11am-2pm)</option>
+          <option value="4afternoon"> afternoon (~2pm-5pm) </option>
+          <option value="5evening"> early evening (~5pm-8pm) </option>
+          <option value="6late-evening"> late-evening (~8pm-11pm)</option>
+          <option value="7midnight"> midnight (~11pm-2am) </option>
+          <option value="8past-midnight"> past midngiht (~2am-5am) </option>
         </select>
 
       </form>

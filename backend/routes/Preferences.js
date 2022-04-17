@@ -2,12 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { Preferences } = require('../models');
 
-<<<<<<< HEAD
 router.get("/", async (req, res) =>{
-=======
-router.get("/all", async (req, res) =>{
-const { Preferences } = require('../models');
->>>>>>> manz
     const listOfPreferences = await Preferences.findAll()
     res.json(listOfPreferences);
 });
@@ -31,5 +26,17 @@ router.post("/", async (req, res) => {
     
     res.json("Success");
 });
+
+router.put('/updatePreference', async (req, res) => {
+    const {name, year, major, personality, studyHabit, timeStudy} = req.body;
+    Preferences.update({
+        name: name,
+        year: year,
+        major: major,
+        personality: personality,
+        studyHabit: studyHabit,
+        timeStudy: timeStudy
+    }, {where: {name: req.user.username}})
+})
 
 module.exports = router;
