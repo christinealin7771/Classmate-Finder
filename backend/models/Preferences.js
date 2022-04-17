@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
     const Preferences = sequelize.define("Preferences", {
-      // user: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      // },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       year: {
         type: DataTypes.STRING,
         allowNull: false,

@@ -8,12 +8,16 @@ const Preferences = () => {
 
   let navigate = useNavigate();
 
+  const [name, setName] = useState("")
   const [year, setYear] = useState("")
   const [major, setMajor] = useState("")
   const [studyHabit, setStudyHabit] = useState("") 
   const [personality, setPersonality] = useState("")
   const [timeStudy, setStudyTime] = useState("")
 
+  const nameHandler = (event) => {
+    setName(event.target.value)
+  }
 
   const yearHandler = (event) => {
     setYear(event.target.value)
@@ -42,6 +46,7 @@ const Preferences = () => {
     console.log(major)
     console.log(timeStudy)
     const data ={
+      name: name,
       year: year,
       major: major,
       personality: personality,
@@ -63,6 +68,10 @@ const Preferences = () => {
 
     <form> 
         <h1 userName="preference">Preference Form</h1>
+        <label for="name">Name</label>
+        <input type="text" onChange={nameHandler} placeholder="(first and last name)"></input>
+        <br></br>
+        <br></br>
         <label for="year">Class year: </label>
         <select 
           name="year" 

@@ -5,6 +5,13 @@
     text-align: right;
 }
 
+.preferenceForm input {
+    display: inline-block; 
+    margin-left: 5px;
+    float:left;
+    border: 2px solid dodgerblue; 
+}
+
 .preferenceForm select {
     display: inline-block; 
     margin-left: 5px;

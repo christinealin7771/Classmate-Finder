@@ -9,8 +9,9 @@ const { Preferences } = require('../models');
 });
 
 router.post("/", async (req, res) => {
-    const {year, major, personality, studyHabit, timeStudy} = req.body;
+    const {name, year, major, personality, studyHabit, timeStudy} = req.body;
     Preferences.create({
+        name: name,
         year: year,
         major: major,
         personality: personality,
