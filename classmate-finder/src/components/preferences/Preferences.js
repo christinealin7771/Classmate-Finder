@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from "axios"
 import './Preferences.css'
 import { useParams } from 'react-router-dom'
-import jwt_decode from 'jwt-decode'; 
+import jwt_decode from 'jwt-decode';
 
 const Preferences = () => {
 

@@ -1,20 +1,34 @@
-.preference label {
+.preferenceForm label {
     display: inline-block; 
     float: left;
     width: 45%;
     text-align: right;
 }
 
-.preference input {
+.preferenceForm input {
     display: inline-block; 
     margin-left: 5px;
     float:left;
     border: 2px solid dodgerblue; 
 }
 
-.preference select {
+.preferenceForm select {
     display: inline-block; 
     margin-left: 5px;
     float:left;
     border: 2px solid dodgerblue; 
 }
+
+.preferenceForm button {
+    margin-top: 15px;
+    height: 40px;
+    border: none;
+    background-color:  dodgerblue;
+    border-radius: 5px;
+    color: white;
+}
+
+.preferenceForm button:hover {
+    cursor: pointer;
+    background-color: lightblue;
+  }

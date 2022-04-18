@@ -2,17 +2,10 @@ const express = require('express')
 const router = express.Router()
 const { Preferences } = require('../models');
 
-router.get("/", async (req, res) =>{
+router.get("/all", async (req, res) =>{
     const listOfPreferences = await Preferences.findAll()
     res.json(listOfPreferences);
 });
-
-// router.get("byId/:id", async (req,res) => {
-//     const id = req.params.id; 
-//     const preferenceById = await Preferences.findByPk(id, {
-//         attributes: {exclude: ["password"]}
-//     })
-// }); 
 
 router.get("/:userId", async (req,res) => {
     const userId = req.params.userId;
@@ -42,8 +35,9 @@ router.post("/", async (req, res) => {
 });
 
 router.put('/updatePreference', async (req, res) => {
-    const {year, major, personality, studyHabit, timeStudy, UserId} = req.body;
+    const {name, year, major, personality, studyHabit, timeStudy, UserId} = req.body;
     Preferences.update({
+        name: name,
         year: year,
         major: major,
         personality: personality,

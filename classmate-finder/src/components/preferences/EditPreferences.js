@@ -8,22 +8,12 @@ import jwt_decode from 'jwt-decode';
 const EditPreferences = () => {
 
   let navigate = useNavigate();
-  //let {id} = useParams(); 
  
   const [year, setYear] = useState("");
   const [major, setMajor] = useState("");
-  const [studyHabit, setStudyHabit] = useState("");
   const [personality, setPersonality] = useState("");
+  const [studyHabit, setStudyHabit] = useState("");
   const [timeStudy, setStudyTime] = useState("");
- 
-
-  /*
-  useEffect(() => {
-    axios.get(`http://localhost:3001/users/basicinfo/${id}`).then((response)=>{
-      setUsername(response.data.username);
-    })
-  }, [])*/
-
 
   const yearHandler = (event) => {
     setYear(event.target.value)
@@ -33,12 +23,12 @@ const EditPreferences = () => {
     setMajor(event.target.value)
   }
 
-  const studyHabitHandler = (event) => {
-    setStudyHabit(event.target.value)
-  }
-  
   const personalityHandler = (event) => {
     setPersonality(event.target.value)
+  }
+
+  const studyHabitHandler = (event) => {
+    setStudyHabit(event.target.value)
   }
 
   const studyTimeHandler = (event) => {
@@ -67,9 +57,7 @@ const EditPreferences = () => {
             alert(response.data.error)
         }
         else {
-            
             navigate(`/preferences/${decoded.id}`, {replace: true});
-
         }
 
     })
@@ -88,6 +76,7 @@ const EditPreferences = () => {
           onChange={yearHandler}
         > 
           <option label=" "></option>
+          <option value="0no-preferenece"> No preference</option>
           <option value="1freshman"> Freshman (1st year)</option>
           <option value="2sophomore"> Sophomore (2nd year)</option>
           <option value="3junior"> Junior (3rd year)</option>
@@ -228,6 +217,7 @@ const EditPreferences = () => {
         <label for="study-habits">Study Habits: How much before a test do you start studying for it? </label>
         <select name="study-habits" id="study-habits" onChange={studyHabitHandler} >
           <option label=" "></option>
+          <option value="0no-preferenece"> No preference</option>
           <option value="1worst">I don't study </option>
           <option value="2bad">The day before or the day of the test.</option>
           <option value="3mid"> The week of the test. </option>

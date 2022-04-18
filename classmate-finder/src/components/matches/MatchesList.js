@@ -3,33 +3,38 @@ import { useParams } from 'react-router-dom';
 import axios from "axios"
 import Match from './Match'
 
-export default function MatcheList() {
+const MatchesList = () => {
   let { id } = useParams(); 
   const [allPreferences, setAllPreferences] = useState([]); 
 
   const [major, setMajor] = useState(""); 
-  const [year, setYear] = useState(""); 
-  const [personality, setPersonality] = useState(""); 
-  const [studyHabit, setStudyHabit] = useState("");
-  const [studyTime, setStudyTime] = useState("");
+  const [year, setYear] = useState(0); 
+  const [personality, setPersonality] = useState(0); 
+  const [studyHabit, setStudyHabit] = useState(0);
+  const [studyTime, setStudyTime] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/preferenecs/byId/${id}').then((response) => {
-      setMajor(response.data.major); 
-      setYear(parseInt(response.data.year.charAt(0))); 
-      setPersonality(response.data.personality); 
-      setStudyHabit(response.data.studyHabit); 
-      setStudyTime(response.data.studyTime); 
+    axios.get(`http://localhost:3001/preferences/${id}`).then((response) => {
+      console.log(response.data[0])
+      setMajor(response.data[0].major); 
+      setYear(response.data[0].year.charAt(0)); 
+      setPersonality(response.data[0].personality.charAt(0)); 
+      setStudyHabit(response.data[0].studyHabit.charAt(0)); 
+      setStudyTime(response.data[0].studyTime.charAt(0)); 
+      console.log(year); 
+      console.log(personality); 
+      console.log(studyHabit); 
+      console.log(studyTime); 
     })
   }, [])
-
+/*
   useEffect(() => {
-    console.log("hitttt"); 
-    axios.get("http://localhost:3001/prefereneces").then((response) => {
-
+    axios.get("http://localhost:3001/prefereneces/all").then((response) => {
+      console.log(allPreferences); 
       setAllPreferences(response.data); 
       var length = allPreferences.length; 
       for (var i = 0; i <length; i++) {
+        console.log(allPreferences.at[i])
         var sum = 0; 
         if (allPreferences[i].major !== major) {
           allPreferences.splice(i,1); 
@@ -48,8 +53,7 @@ export default function MatcheList() {
         if (parseInt(allPreferences[i].studyTime.charAt(0)) !== 0) {
           sum += Math.abs((studyTime - parseInt(allPreferences[i].studyTime.charAt(0))));
         }
-        allPreferences[i].matchScore = sum; 
-        console.log(sum); 
+        allPreferences[i].matchScore = sum;  
       }
       allPreferences.sort(function(a, b) {
         return a.matchScore - b.matchScore; 
@@ -57,11 +61,7 @@ export default function MatcheList() {
 
 
     });
-  }, []); 
-; 
-
-  
-
+  }, []); */
   
   return (
     <div>
@@ -74,3 +74,5 @@ export default function MatcheList() {
     
   )
 }
+
+export default MatchesList

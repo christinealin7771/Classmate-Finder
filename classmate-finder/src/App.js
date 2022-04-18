@@ -18,6 +18,7 @@ import Post from './components/communication/Post';
 import Room from './components/communication/Room';
 import UpdatePost from './components/communication/UpdatePost';
 import GetPosts from './components/communication/GetPosts';
+import MatchesList from './components/matches/MatchesList'
 
 import { AuthContext } from './AuthContext';
 import { useState, useEffect } from 'react';
@@ -49,6 +50,7 @@ function App() {
          <Route path="/preferences" element={<Preferences/>}></Route>
          <Route path="/preferences/:id" element={<DisplayPreferences/>}></Route>
          <Route path="/editPreferences" element={<EditPreferences/>}></Route>
+         <Route path="/Matches/:id" element={<MatchesList/>}></Route>
          <Route path="/rooms/:userName" element={<GetRooms />} />
          <Route path="/createroom" element={<CreateRoom />}/>
          <Route path="/room/:roomId" element={<Room />}/>

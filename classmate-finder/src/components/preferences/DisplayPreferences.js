@@ -24,13 +24,11 @@ const DisplayPreferences = () => {
           setStudyHabit(response.data[0].studyHabit)
           setPersonality(response.data[0].personality);
           setStudyTime(response.data[0].timeStudy);
-          
-          
         })
       }, [])
 
   return (
-    <div className = "preferenceForm">
+    <div className = "preferenceDisplay">
         <h1>Hello: {name}</h1>
         <h3>Year: {year}</h3>
         <h3>Major: {major}</h3>
@@ -38,10 +36,6 @@ const DisplayPreferences = () => {
         <h3>Personality: {personality}</h3>
         <h3>Study Time: {timeStudy}</h3>
         <button onClick={() => {navigate("/editPreferences", {replace:true})}}>Update Preference Form</button>
-       
-
-        
-
     </div>
   )
 }
