@@ -48,7 +48,7 @@ const Profile = () => {
         <h3>Username: {username}</h3>
         <button onClick={() => {navigate("/changeusername", {replace:true})}}>Change Username</button>
         <h3>Email: {email}</h3>
-        <button onClick={() => {navigate("/changeemail", {replace:true})}}>Change Username</button>
+        <button onClick={() => {navigate("/changeemail", {replace:true})}}>Change Email</button>
       </div>
 
       <button onClick ={deleteAccount}>Delete Account</button>
