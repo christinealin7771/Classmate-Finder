@@ -13,7 +13,7 @@ const EditPreferences = () => {
   const [major, setMajor] = useState("");
   const [personality, setPersonality] = useState("");
   const [studyHabit, setStudyHabit] = useState("");
-  const [timeStudy, setStudyTime] = useState("");
+  const [studyTime, setStudyTime] = useState("");
 
   const yearHandler = (event) => {
     setYear(event.target.value)
@@ -44,7 +44,7 @@ const EditPreferences = () => {
       major: major,
       personality: personality,
       studyHabit: studyHabit,
-      timeStudy: timeStudy,
+      studyTime: studyTime,
       UserId: decoded.id
     }
     console.log(data);

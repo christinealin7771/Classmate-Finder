@@ -18,7 +18,7 @@ router.get("/:userId", async (req,res) => {
 
 
 router.post("/", async (req, res) => {
-    const {name, year, major, personality, studyHabit, timeStudy, UserId} = req.body;
+    const {name, year, major, personality, studyHabit, studyTime, UserId} = req.body;
     // const username = 
     
     Preferences.create({
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
         major: major,
         personality: personality,
         studyHabit: studyHabit,
-        timeStudy: timeStudy,
+        studyTime: studyTime,
         UserId: UserId
     })
     
@@ -35,14 +35,14 @@ router.post("/", async (req, res) => {
 });
 
 router.put('/updatePreference', async (req, res) => {
-    const {name, year, major, personality, studyHabit, timeStudy, UserId} = req.body;
+    const {name, year, major, personality, studyHabit, studyTime, UserId} = req.body;
     Preferences.update({
         name: name,
         year: year,
         major: major,
         personality: personality,
         studyHabit: studyHabit,
-        timeStudy: timeStudy,
+        studyTime: studyTime,
         UserId: UserId
     }, {where: {UserId: UserId}})
 

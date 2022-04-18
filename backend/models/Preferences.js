@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      timeStudy: {
+      studyTime: {
         type: DataTypes.STRING,
         allowNull: false,
       },

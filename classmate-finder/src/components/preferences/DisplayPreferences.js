@@ -13,7 +13,7 @@ const DisplayPreferences = () => {
     const [major, setMajor] = useState("");
     const [studyHabit, setStudyHabit] = useState("");
     const [personality, setPersonality] = useState("");
-    const [timeStudy, setStudyTime] = useState("");
+    const [studyTime, setStudyTime] = useState("");
 
     useEffect (() => {
         axios.get(`http://localhost:3001/preferences/${id}`).then((response)=>{
@@ -23,7 +23,7 @@ const DisplayPreferences = () => {
           setMajor(response.data[0].major);
           setStudyHabit(response.data[0].studyHabit)
           setPersonality(response.data[0].personality);
-          setStudyTime(response.data[0].timeStudy);
+          setStudyTime(response.data[0].studyTime);
         })
       }, [])
 
@@ -34,7 +34,7 @@ const DisplayPreferences = () => {
         <h3>Major: {major}</h3>
         <h3>Study Habit: {studyHabit}</h3>
         <h3>Personality: {personality}</h3>
-        <h3>Study Time: {timeStudy}</h3>
+        <h3>Study Time: {studyTime}</h3>
         <button onClick={() => {navigate("/editPreferences", {replace:true})}}>Update Preference Form</button>
     </div>
   )

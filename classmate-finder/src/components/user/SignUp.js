@@ -41,7 +41,7 @@ const SignUp = () => {
         major: "0no-preferenece",
         personality: "0no-preferenece",
         studyHabit: "0no-preferenece",
-        timeStudy: "0no-preferenece",
+        studyTime: "0no-preferenece",
         UserId: decoded.id,
       }
       console.log(emptyPreference); 

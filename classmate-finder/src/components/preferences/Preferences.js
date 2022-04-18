@@ -15,7 +15,7 @@ const Preferences = () => {
   const [major, setMajor] = useState("");
   const [studyHabit, setStudyHabit] = useState("");
   const [personality, setPersonality] = useState("");
-  const [timeStudy, setStudyTime] = useState("");
+  const [studyTime, setStudyTime] = useState("");
  
 
   /*
@@ -59,7 +59,7 @@ const Preferences = () => {
       major: major,
       personality: personality,
       studyHabit: studyHabit,
-      timeStudy: timeStudy,
+      studyTime: studyTime,
       UserId: decoded.id
     }
     console.log(data);
