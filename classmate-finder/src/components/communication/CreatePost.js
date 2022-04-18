@@ -31,7 +31,7 @@ function CreatePost() {
                 <h2>Body</h2>
                 <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setBody(e.target.value)}}/>
                 <h2>Time</h2>
-                <textarea id="textbox" placeholder="YYYY-MM-DD HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
+                <textarea id="textbox" placeholder="MM-DD-YYYY HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
                 <br></br>
                 <button className="buttongr" onClick = { APIPost }>Create Post</button>
                 <button className="button" onClick= {() => {navigate("/posts", {replace: true})}}>Go Back</button>
