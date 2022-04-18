@@ -1,4 +1,4 @@
-.preferenceForm {
+.preference {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -7,14 +7,8 @@
     padding-top: 10px;
 }
 
-.preferenceForm select {
-    display: inline-block; 
-    margin-left: 5px;
-    float:left;
-    border: 2px solid dodgerblue; 
-}
 
-.preferenceForm button {
+.preferencebutton {
     margin-top: 15px;
     height: 40px;
     border: none;
@@ -23,7 +17,7 @@
     color: white;
 }
 
-.preferenceForm button:hover {
+.preference button:hover {
     cursor: pointer;
     background-color: lightblue;
   }
