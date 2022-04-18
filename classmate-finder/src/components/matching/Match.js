@@ -12,7 +12,7 @@ export default function Match({match}) {
     const token = localStorage.getItem('accessToken')
     const decoded = jwt_decode(token);
     console.log("hello")
-    navigate(`/room/${decoded.username}`, {replace:true})
+    navigate(`/rooms/${decoded.username}`, {replace:true})
   }
   
   return (
