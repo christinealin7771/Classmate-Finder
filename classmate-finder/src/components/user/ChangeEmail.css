@@ -1,0 +1,20 @@
+.email {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+.email button {
+    margin-top: 15px;
+    height: 40px;
+    border: none;
+    background-color:  dodgerblue;
+    border-radius: 5px;
+    color: white;
+}
+
+.email button:hover {
+    cursor: pointer;
+    background-color: lightblue;
+  }
