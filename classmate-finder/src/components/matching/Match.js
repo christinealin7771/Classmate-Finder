@@ -1,13 +1,20 @@
 import React from 'react'
 import './Match.css' 
+import { useNavigate } from 'react-router-dom';
 import { yearOptions, majorOptions} from './PreferenceOptions';
-
-const startChat = () => {
-
-}
+import jwt_decode from "jwt-decode";
 
 export default function Match({match}) {
 
+  let navigate = useNavigate();
+
+  async function startChat() {
+    const token = localStorage.getItem('accessToken')
+    const decoded = jwt_decode(token);
+    console.log("hello")
+    navigate(`/room/${decoded.username}`, {replace:true})
+  }
+  
   return (
     <div className = "match">
       <div className='matchText'> 
