@@ -26,7 +26,6 @@ const DisplayPreferences = () => {
         setStudyHabit(response.data[0].studyHabit)
         setPersonality(response.data[0].personality);
         setStudyTime(response.data[0].studyTime);
-        console.log(personality)
       })
     }, [])
 

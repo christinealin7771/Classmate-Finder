@@ -36,8 +36,8 @@ const SignUp = () => {
       const decoded = jwt_decode(token);
       const emptyPreference = {
         name: data.name,
-        year: "0no-preferenece",
-        major: "0no-preferenece",
+        year: "0no-year",
+        major: "0no-major",
         personality: "0no-preferenece",
         studyHabit: "0no-preferenece",
         studyTime: "0no-preferenece",

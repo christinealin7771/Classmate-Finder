@@ -17,7 +17,7 @@ export default function Match({match}) {
         <br></br>
         <label> {majorOptions[match.major]} Major</label>
         <br></br>
-        <label> Match Score: {match.matchScore}</label>
+        <label> Match Score: {match.matchScore} </label>
       </div> 
       
       <button onClick = { startChat }> Chat with {match.name} </button>
