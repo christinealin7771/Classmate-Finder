@@ -38,7 +38,8 @@ const Header = () => {
             <h1>Classmate Finder</h1>
            
             <div className="links"> 
-                <Link to="/chat">Chat</Link>
+                <Link to="/posts">Posts</Link>
+                <Link to="/rooms/nicholas">Messages</Link>
                 
                 {!authState ? (
                     <>
