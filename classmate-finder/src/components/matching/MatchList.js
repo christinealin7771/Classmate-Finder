@@ -30,9 +30,6 @@ const MatchList = () => {
     })
   }, [])
 
-  useEffect(() => {
-  }, [])
-
   function createMatches() {
     var length = allPreferences.length; 
     const token = localStorage.getItem('accessToken'); 
@@ -40,10 +37,7 @@ const MatchList = () => {
 
     for (var i = 0; i <length; i++) {
       var sum = 0; 
-      if (allPreferences[i].major !== major | allPreferences[i].UserId === decoded.id) {
-       // allPreferences.splice(i,1); 
-       // i--; 
-       // length--; 
+      if (allPreferences[i].major !== major | allPreferences[i].UserId === decoded.id) { 
         continue; 
       }
       if (parseInt(allPreferences[i].year.charAt(0)) !== 0) {

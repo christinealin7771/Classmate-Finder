@@ -10,6 +10,7 @@ import ChangeUsername from './components/user/ChangeUsername';
 import ChangeEmail from './components/user/ChangeEmail';
 import DisplayPreferences from './components/matching/DisplayPreferences';
 import EditPreferences from './components/matching/EditPreferences';
+import MatchList from './components/matching/MatchList'
 import CreatePost from './components/communication/CreatePost';
 import CreateRoom from './components/communication/CreateRoom';
 import GetRooms from './components/communication/GetRooms';
@@ -17,7 +18,6 @@ import Post from './components/communication/Post';
 import Room from './components/communication/Room';
 import UpdatePost from './components/communication/UpdatePost';
 import GetPosts from './components/communication/GetPosts';
-import MatchList from './components/matching/MatchList'
 
 import { AuthContext } from './AuthContext';
 import { useState, useEffect } from 'react';
