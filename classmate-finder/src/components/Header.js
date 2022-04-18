@@ -23,6 +23,13 @@ const Header = () => {
         const decoded = jwt_decode(token);
         navigate(`/profile/${decoded.id}`, {replace: true});
     }
+
+    const preferencesClick = () => {
+        const token = localStorage.getItem('accessToken')
+        const decoded = jwt_decode(token);
+        navigate(`/preferences/${decoded.id}`, {replace: true});
+        //navigate(`/preferences/`, {replace: true});
+    }
    
 
 
@@ -43,6 +50,7 @@ const Header = () => {
                        
                         {/* <Link to="/profile/:id">Profile</Link> */}
                         <a onClick ={profileClick}>Profile</a>
+                        <a onClick ={preferencesClick}>Preferences</a>
                         <button onClick={logout}>Logout</button>
                     </>
                 )}

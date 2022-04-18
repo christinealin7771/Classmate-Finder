@@ -10,6 +10,8 @@ const db = require('./models');
 //Routers
 const usersRouter = require("./routes/Users")
 app.use("/users", usersRouter)
+const preferencesRouter = require("./routes/Preferences")
+app.use("/preferences", preferencesRouter)
 
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {

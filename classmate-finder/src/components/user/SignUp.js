@@ -1,30 +1,63 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './SignUp.css'
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
+import { AuthContext } from '../../AuthContext'
 
 import { useNavigate } from 'react-router-dom'
 
 
 const SignUp = () => {
   let navigate = useNavigate()
+  const {setAuthState} = useContext(AuthContext)
   const initValue = {
     username: "",
     password: "",
     name: "",
     email: "",
   }
+  
 
   const validSchema = Yup.object().shape({
     username: Yup.string().min(3).max(15).required(),
     password: Yup.string().min(4).max(20).required(),
   })
 
+  const login = (data) => {
+    axios.post("http://localhost:3001/users/login", data).then((response) => {
+        localStorage.setItem("accessToken", response.data)
+        setAuthState(true)
+        console.log(response.data)
+        //const token = localStorage.getItem('accessToken')
+        //const decoded = jwt_decode(token);
+        
+        //navigate(`/profile/${decoded.id}`, {replace: true});
+        // navigate("/login", {replace: true});
+        navigate("/preferences", {replace: true});
+        
+      
+    })
+
+  }
+
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/users", data).then(() => {
-      console.log(data);
-      navigate("/login", {replace: true});
+      console.log(data.username);
+      console.log(data.password)
+
+      const loginValue = {
+        username: data.username,
+        password: data.password,
+      }
+      login(loginValue)
+
+      //navigate("/login", {replace: true});
+      // localStorage.setItem("accessToken", loginValue)
+      // setAuthState(true)
+      // navigate("/preferences", {replace: true});
+
+      
     })
   }
 

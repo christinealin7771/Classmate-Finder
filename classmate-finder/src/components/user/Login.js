@@ -50,6 +50,7 @@ const Login = () => {
         setAuthState(true)
         const token = localStorage.getItem('accessToken')
         const decoded = jwt_decode(token);
+        
         navigate(`/profile/${decoded.id}`, {replace: true});
         
       }

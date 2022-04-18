@@ -19,10 +19,15 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     //associating a table to another, a user can have multiple posts
-    // Users.associate = (models) => {
-  //   Users.hasMany(models.Posts, {
-  //     onDelete: "cascade",
-  //   });
-  // };
+    Users.associate = (models) => {
+        Users.hasOne(models.Preferences, {
+            onDelete: "cascade",
+        })
+    }
+//     Users.associate = (models) => {
+//     Users.hasMany(models.Posts, {
+//       onDelete: "cascade",
+//     });
+//   };
     return Users;
 }

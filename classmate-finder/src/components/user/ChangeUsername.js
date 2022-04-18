@@ -15,6 +15,7 @@ const ChangeUsername = () => {
     const changeUsername = () => {
         const data = {
             newUsername: newUsername,
+            
         }
         axios.put("http://localhost:3001/users/changeusername", data, {
             headers: {

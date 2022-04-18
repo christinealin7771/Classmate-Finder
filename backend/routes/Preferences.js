@@ -1,0 +1,64 @@
+const express = require('express')
+const router = express.Router()
+const { Preferences } = require('../models');
+
+router.get("/", async (req, res) =>{
+    const listOfPreferences = await Preferences.findAll()
+    res.json(listOfPreferences);
+});
+
+// router.get("byId/:id", async (req,res) => {
+//     const id = req.params.id; 
+//     const preferenceById = await Preferences.findByPk(id, {
+//         attributes: {exclude: ["password"]}
+//     })
+// }); 
+
+router.get("/:userId", async (req,res) => {
+    const userId = req.params.userId;
+    const preferences = await Preferences.findAll({where: {UserId: userId}})
+    //const preferences = await Preferences.findByPk(id)
+
+    res.json(preferences)
+})
+
+
+
+router.post("/", async (req, res) => {
+    const {name, year, major, personality, studyHabit, timeStudy, UserId} = req.body;
+    // const username = 
+    
+    Preferences.create({
+        name: name,
+        year: year,
+        major: major,
+        personality: personality,
+        studyHabit: studyHabit,
+        timeStudy: timeStudy,
+        UserId: UserId
+    })
+    
+    res.json("Success");
+});
+
+router.put('/updatePreference', async (req, res) => {
+    const {year, major, personality, studyHabit, timeStudy, UserId} = req.body;
+    Preferences.update({
+        year: year,
+        major: major,
+        personality: personality,
+        studyHabit: studyHabit,
+        timeStudy: timeStudy,
+        UserId: UserId
+    }, {where: {UserId: UserId}})
+
+    res.json("Success")
+})
+// router.put('/updatePreference', async (req, res) => {
+//     const preference = req.body;
+//     Preferences.update(preference, {where: {username: req.user.username}})
+
+//     res.json(preference)
+// })
+
+module.exports = router;
