@@ -10,7 +10,6 @@ const Preferences = () => {
   let navigate = useNavigate();
   //let {id} = useParams(); 
  
-  
 
   const [name, setName] = useState("");
   const [year, setYear] = useState("");

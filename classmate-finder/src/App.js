@@ -21,7 +21,7 @@ import { AuthContext } from './AuthContext';
 import { useState, useEffect } from 'react';
 
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   const [authState, setAuthState] = useState(false)
@@ -38,6 +38,7 @@ function App() {
       <Router>
       <Header/>
        <Routes>
+        
          <Route path="/profile/:id" element={<Profile/>}></Route>
          <Route path="/changepassword" element={<ChangePassword/>}></Route>
          <Route path="/changeusername" element={<ChangeUsername/>}></Route>
@@ -46,7 +47,8 @@ function App() {
          <Route path="/signup" element={<SignUp/>}></Route>
          <Route path="/preferences" element={<Preferences/>}></Route>
          <Route path="/preferences/:id" element={<DisplayPreferences/>}></Route>
-         <Route path="/editPreferences" element={<EditPreferences/>}></Route>
+         <Route path="/editPreferences/:id" element={<EditPreferences/>}></Route>
+
          <Route path="/rooms/:userName" element={<GetRooms />} />
          <Route path="/createroom" element={<CreateRoom />}/>
          <Route path="/room/:roomId" element={<Room />}/>

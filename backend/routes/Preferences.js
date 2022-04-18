@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { Preferences } = require('../models');
 
-router.get("/", async (req, res) =>{
+router.get("/all", async (req, res) =>{
     const listOfPreferences = await Preferences.findAll()
     res.json(listOfPreferences);
 });
