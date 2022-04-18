@@ -1,5 +1,5 @@
 export const yearOptions = {
-    "0no-preferenece": "No preference",
+    "0no-year": "No year selected",
     "1freshman": "Freshman (1st year)",
     "2sophomore": "Sophomore (2nd year)",
     "3junior": "Junior (3rd year)",
@@ -8,7 +8,7 @@ export const yearOptions = {
 }
 
 export const majorOptions = {
-    "0no-preferenece": "No preference",
+    "0no-major": "No major selected",
     "accounting": "Accounting",
     "advertising": "Advertising",
     "aerospace engineering": "Aerospace Engineering",

@@ -2,8 +2,10 @@ import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import axios from "axios"
 import Match from './Match'
+import './MatchList.css'
 
-const MatchesList = () => {
+
+const MatchList = () => {
   let { id } = useParams(); 
   const [allPreferences, setAllPreferences] = useState([]); 
 
@@ -24,9 +26,10 @@ const MatchesList = () => {
   }, [])
   useEffect(() => {
     axios.get("http://localhost:3001/preferences/all").then((response) => {
-      console.log(response.data);
-
       setAllPreferences(response.data); 
+      console.log(response.data); 
+
+      console.log(allPreferences); 
       var length = allPreferences.length; 
       for (var i = 0; i <length; i++) {
         console.log(allPreferences.at[i])
@@ -49,7 +52,10 @@ const MatchesList = () => {
           sum += Math.abs((studyTime - parseInt(allPreferences[i].studyTime.charAt(0))));
         }
         allPreferences[i].matchScore = sum;  
+        console.log(sum); 
+        console.log(allPreferences[i].matchScore); 
       }
+      
       allPreferences.sort(function(a, b) {
         return a.matchScore - b.matchScore; 
       })
@@ -57,7 +63,9 @@ const MatchesList = () => {
   }, []);
   
   return (
-    <div>
+    <div className = "matchlist">
+    
+    <h1>Most Compatible Matches</h1>
       {
         allPreferences.map(match => {
           return <Match key={match.id} match={match} />
@@ -68,4 +76,4 @@ const MatchesList = () => {
   )
 }
 
-export default MatchesList
+export default MatchList

@@ -8,7 +8,6 @@ import SignUp from './components/user/SignUp';
 import ChangePassword from './components/user/ChangePassword';
 import ChangeUsername from './components/user/ChangeUsername';
 import ChangeEmail from './components/user/ChangeEmail';
-//import Preferences from './components/preferences/Preferences';
 import DisplayPreferences from './components/matching/DisplayPreferences';
 import EditPreferences from './components/matching/EditPreferences';
 import CreatePost from './components/communication/CreatePost';
@@ -18,7 +17,7 @@ import Post from './components/communication/Post';
 import Room from './components/communication/Room';
 import UpdatePost from './components/communication/UpdatePost';
 import GetPosts from './components/communication/GetPosts';
-import MatchesList from './components/matching/MatchesList'
+import MatchList from './components/matching/MatchList'
 
 import { AuthContext } from './AuthContext';
 import { useState, useEffect } from 'react';
@@ -49,7 +48,7 @@ function App() {
          <Route path="/signup" element={<SignUp/>}></Route>
          <Route path="/preferences/:id" element={<DisplayPreferences/>}></Route>
          <Route path="/editPreferences/:id" element={<EditPreferences/>}></Route>
-         <Route path="/Matches/:id" element={<MatchesList/>}></Route>
+         <Route path="/Matches/:id" element={<MatchList/>}></Route>
          <Route path="/rooms/:userName" element={<GetRooms />} />
          <Route path="/createroom" element={<CreateRoom />}/>
          <Route path="/room/:roomId" element={<Room />}/>
