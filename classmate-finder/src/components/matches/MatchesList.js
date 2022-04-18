@@ -15,20 +15,15 @@ const MatchesList = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:3001/preferences/${id}`).then((response) => {
-      console.log(response.data[0])
       setMajor(response.data[0].major); 
-      setYear(response.data[0].year.charAt(0)); 
-      setPersonality(response.data[0].personality.charAt(0)); 
-      setStudyHabit(response.data[0].studyHabit.charAt(0)); 
-      setStudyTime(response.data[0].studyTime.charAt(0)); 
-      console.log(year); 
-      console.log(personality); 
-      console.log(studyHabit); 
-      console.log(studyTime); 
+      setYear(parseInt(response.data[0].year.charAt(0),10));  
+      setPersonality(parseInt(response.data[0].personality.charAt(0),10)); 
+      setStudyHabit(parseInt(response.data[0].studyHabit.charAt(0),10)); 
+      setStudyTime(parseInt(response.data[0].studyTime.charAt(0,10))); 
     })
   }, [])
-/*
   useEffect(() => {
+    console.log("teststssts")
     axios.get("http://localhost:3001/prefereneces/all").then((response) => {
       console.log(allPreferences); 
       setAllPreferences(response.data); 
@@ -61,7 +56,7 @@ const MatchesList = () => {
 
 
     });
-  }, []); */
+  }, []); 
   
   return (
     <div>

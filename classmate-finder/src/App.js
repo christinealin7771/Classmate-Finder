@@ -8,7 +8,7 @@ import SignUp from './components/user/SignUp';
 import ChangePassword from './components/user/ChangePassword';
 import ChangeUsername from './components/user/ChangeUsername';
 import ChangeEmail from './components/user/ChangeEmail';
-import Preferences from './components/preferences/Preferences';
+//import Preferences from './components/preferences/Preferences';
 import DisplayPreferences from './components/preferences/DisplayPreferences';
 import EditPreferences from './components/preferences/EditPreferences';
 import CreatePost from './components/communication/CreatePost';
@@ -47,9 +47,8 @@ function App() {
          <Route path="/changeemail" element={<ChangeEmail/>}></Route>
          <Route path="/login" element={<Login/>}></Route>
          <Route path="/signup" element={<SignUp/>}></Route>
-         <Route path="/preferences" element={<Preferences/>}></Route>
          <Route path="/preferences/:id" element={<DisplayPreferences/>}></Route>
-         <Route path="/editPreferences" element={<EditPreferences/>}></Route>
+         <Route path="/editPreferences/:id" element={<EditPreferences/>}></Route>
          <Route path="/Matches/:id" element={<MatchesList/>}></Route>
          <Route path="/rooms/:userName" element={<GetRooms />} />
          <Route path="/createroom" element={<CreateRoom />}/>

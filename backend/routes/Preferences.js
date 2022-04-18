@@ -15,8 +15,6 @@ router.get("/:userId", async (req,res) => {
     res.json(preferences)
 })
 
-
-
 router.post("/", async (req, res) => {
     const {name, year, major, personality, studyHabit, studyTime, UserId} = req.body;
     // const username = 

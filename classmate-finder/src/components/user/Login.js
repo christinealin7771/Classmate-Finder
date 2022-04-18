@@ -6,9 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../AuthContext'
 import jwt_decode from "jwt-decode";
 
- 
-
-
 const Login = () => {
 
  
@@ -23,6 +20,7 @@ const Login = () => {
   useEffect(() => {
     axios.get("http://localhost:3001/users/all").then((response) => {
       setallUsers(response.data);
+      //console.log(allUsers); 
     });
   }, []);
 

@@ -28,14 +28,13 @@ const Header = () => {
         const token = localStorage.getItem('accessToken')
         const decoded = jwt_decode(token);
         navigate(`/preferences/${decoded.id}`, {replace: true});
-        //navigate(`/preferences/`, {replace: true});
     }
 
     const chatClick = () => {
         const token = localStorage.getItem('accessToken')
         const decoded = jwt_decode(token);
         navigate(`/rooms/${decoded.username}`, {replace: true});
-        //navigate(`/preferences/`, {replace: true});
+
     }
     const matchesClick = () => {
         const token = localStorage.getItem('accessToken')

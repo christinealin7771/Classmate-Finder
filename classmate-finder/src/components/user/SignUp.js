@@ -17,7 +17,6 @@ const SignUp = () => {
     name: "",
     email: "",
   }
-  
 
   const validSchema = Yup.object().shape({
     username: Yup.string().min(3).max(15).required(),
