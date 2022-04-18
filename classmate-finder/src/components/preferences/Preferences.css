@@ -18,3 +18,17 @@
     float:left;
     border: 2px solid dodgerblue; 
 }
+
+.preferenceForm button {
+    margin-top: 15px;
+    height: 40px;
+    border: none;
+    background-color:  dodgerblue;
+    border-radius: 5px;
+    color: white;
+}
+
+.preferenceForm button:hover {
+    cursor: pointer;
+    background-color: lightblue;
+  }

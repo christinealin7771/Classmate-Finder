@@ -8,9 +8,7 @@ import jwt_decode from 'jwt-decode';
 const Preferences = () => {
 
   let navigate = useNavigate();
-  let {id} = useParams(); 
- 
-  
+  //let {id} = useParams(); 
 
   const [name, setName] = useState("");
   const [year, setYear] = useState("");
@@ -18,6 +16,7 @@ const Preferences = () => {
   const [studyHabit, setStudyHabit] = useState("");
   const [personality, setPersonality] = useState("");
   const [timeStudy, setStudyTime] = useState("");
+ 
 
   /*
   useEffect(() => {
@@ -53,19 +52,20 @@ const Preferences = () => {
   const onSubmit = () => {
     const token = localStorage.getItem('accessToken'); 
     const decoded = jwt_decode(token);
+
     const data = {
-      username: decoded.id, 
       name: name,
       year: year,
       major: major,
       personality: personality,
       studyHabit: studyHabit,
-      timeStudy: timeStudy
+      timeStudy: timeStudy,
+      UserId: decoded.id
     }
     console.log(data);
     axios.post("http://localhost:3001/preferences", data).then(() => {
       console.log(data);
-      navigate("/", ({replace: true}));
+      navigate(`/profile/${decoded.id}`, {replace: true});
     })
     
   }
@@ -279,7 +279,7 @@ const Preferences = () => {
         <br></br>
         <br></br> 
 
-        <button onClick={onSubmit}>Update Preference</button>
+        <button onClick={onSubmit}>Save Preference</button>
     </div>
   )
 
