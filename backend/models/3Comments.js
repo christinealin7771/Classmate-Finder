@@ -27,6 +27,16 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'postid' 
             }
         }, 
+        createdAt: {
+            type: "TIMESTAMP",
+            allowNull: false,
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP()')
+        },
+        updatedAt: {
+            type: "TIMESTAMP",
+            allowNull: false,
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP()')
+        }
     }, {timestamps: false})
 
     //associating a table to another, a user can have multiple posts

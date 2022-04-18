@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        location: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         body: {
             type: DataTypes.TEXT,
             allowNull: false,
@@ -27,8 +31,18 @@ module.exports = (sequelize, DataTypes) => {
             type: "TIMESTAMP",
             allowNull: false,
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP()')
+        }, 
+        createdAt: {
+            type: "TIMESTAMP",
+            allowNull: false,
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP()')
+        },
+        updatedAt: {
+            type: "TIMESTAMP",
+            allowNull: false,
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP()')
         }
-    })
+    }, {timestamps: false})
 
     //associating a table to another, a user can have multiple posts
     // Users.associate = (models) => {
