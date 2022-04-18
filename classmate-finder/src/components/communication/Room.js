@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import {useParams, useHistory} from "react-router-dom"
+import {useParams, useNavigate} from "react-router-dom"
 import Axios from 'axios'
 import './Communication.css'
 
@@ -9,7 +9,7 @@ function Room() {
     const [user, setUser] = useState("");
     const [added, setAdded] = useState("");
     let {roomId} = useParams();
-    let history = useHistory();
+    let navigate = useNavigate();
 
     // get username from parameters (url)
     const chatId = roomId.split('-')[0]
@@ -58,7 +58,7 @@ function Room() {
                 <textarea id="textbox" onChange = { (e) => {setMessage(e.target.value)}}/>
                 <button className="buttonlg" onClick = {APIPost}>Send Message</button>
                 <hr></hr>
-                <button className="button" onClick= {() => {(history.push(`/rooms/${username}`))}}>Go Back</button>
+                <button className="button" onClick= {() => {(navigate(`/rooms/${username}`, {replace:true}))}}>Go Back</button>
             </div>
         </div>
     );

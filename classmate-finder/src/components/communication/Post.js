@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import {useParams, useHistory} from "react-router-dom"
+import {useParams, useNavigate} from "react-router-dom"
 import Axios from 'axios'
 import './Communication.css'
 
@@ -11,7 +11,7 @@ function Post() {
     let username = "tomato";
     let author = "";
 
-    let history = useHistory();
+    let navigate = useNavigate();
 
     // call express API server and get post contents from ID
     useEffect(() => {
@@ -32,7 +32,7 @@ function Post() {
     // call express API server on port 3001 (post) to delete post
     const APIDelete = () => {
         Axios.post('http://localhost:3001/api/deletePost', {id: postId})
-        history.push(`/posts`);
+        navigate(`/posts`, {replace: true});
     }
 
     return (
@@ -49,9 +49,9 @@ function Post() {
                             </div>
                         )})
                     }
-                    { username === author ? <button className="buttongr" onClick= {() => {(history.push(`/updatepost/${postId}`))}}>Edit Post</button> : <br></br> }
+                    { username === author ? <button className="buttongr" onClick= {() => {(navigate(`/updatepost/${postId}`, {replace: true}))}}>Edit Post</button> : <br></br> }
                     { username === author ? <button className="buttonrd" onClick= { APIDelete }>Delete Post</button> : <p></p> }
-                    <button className="button" onClick= {() => {(history.push(`/posts`))}}>Go Back</button>
+                    <button className="button" onClick= {() => {(navigate(`/posts`, {replace: true}))}}>Go Back</button>
                 </div>
                 <div className="CommentContainer">
                     <h2>Comments</h2>

@@ -23,15 +23,14 @@ const Header = () => {
         const decoded = jwt_decode(token);
         navigate(`/profile/${decoded.id}`, {replace: true});
     }
-   
-
 
     return (
         <div className = "header">
             <h1>Classmate Finder</h1>
            
             <div className="links"> 
-                <Link to="/chat">Chat</Link>
+                <Link to="/posts">Posts</Link>
+                <Link to="/rooms/nicholas">Messages</Link>
                 
                 {!authState ? (
                     <>

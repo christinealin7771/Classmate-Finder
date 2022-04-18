@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios'
-import { Button } from 'react-bootstrap'
 import {useParams} from "react-router-dom"
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import './Communication.css'
 
 function UpdatePost() {
@@ -12,7 +11,7 @@ function UpdatePost() {
     const [bod,setBody] = useState("");
     const [sched,setTime] = useState("");
 
-    let history = useHistory();
+    let navigate = useNavigate();
 
     // call express API server on port 5051 (post)
     const APIPost = () => {
@@ -34,7 +33,7 @@ function UpdatePost() {
                 <textarea id="textbox" placeholder="YYYY-MM-DD HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
                 <br></br>
                 <button className="buttongr" onClick = { APIPost }>Update Post</button>
-                <button className="button" onClick= {() => {(history.push(`/posts`))}}>Go Back</button>
+                <button className="button" onClick= {() => {(navigate(`/posts`, {replace: true}))}}>Go Back</button>
             </div>
         </div>
     )

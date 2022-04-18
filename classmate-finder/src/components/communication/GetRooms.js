@@ -2,14 +2,14 @@ import React,{useState,useEffect} from 'react'
 import Axios from 'axios'
 import {useParams} from "react-router-dom"
 import {useSearchParams} from "react-router-dom"
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import './Communication.css'
 
 function GetRooms() {
     // get username from url
     const [roomList,setRoomList] = useState([]);
     let {userName} = useParams();
-    let history = useHistory();
+    let navigate = useNavigate();
 
     // call express API server and get rooms and store in list
     useEffect(() => {
@@ -28,7 +28,7 @@ function GetRooms() {
                     <p>Create Room</p>
                     { roomList.map((val, key) => {
                         return (
-                            <p onClick= {() => {(history.push(`/room/${val.chatid}-${userName}`))}}>{val.users}</p>
+                            <p onClick= {() => {(navigate(`/room/${val.chatid}-${userName}`, {replace: true}))}}>{val.users}</p>
                         )})
                     }
                 </ul>

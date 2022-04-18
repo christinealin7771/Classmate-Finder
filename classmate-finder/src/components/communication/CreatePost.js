@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios'
-import { Button } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom"
 import './Communication.css'
 
@@ -11,7 +10,7 @@ function CreatePost() {
     const [bod,setBody] = useState("");
     const [sched,setTime] = useState("");
     let aut = "nick d";
-    let history = useHistory();
+    let navigate = useNavigate();
 
     // call express API server on port 3001 (post)
     const APIPost = () => {
@@ -34,7 +33,7 @@ function CreatePost() {
                 <textarea id="textbox" placeholder="YYYY-MM-DD HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
                 <br></br>
                 <button className="buttongr" onClick = { APIPost }>Create Post</button>
-                <button className="button" onClick= {() => {(history.push(`/posts`))}}>Go Back</button>
+                <button className="button" onClick= {() => {navigate("/posts", {replace: true})}}>Go Back</button>
             </div>
         </div>
     )
