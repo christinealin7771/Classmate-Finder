@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import {useParams, useNavigate} from "react-router-dom"
 import Axios from 'axios'
 import './Communication.css'
+import jwt_decode from "jwt-decode";
 
 function Room() {
     const [messageList,setMessageList] = useState([])
@@ -9,11 +10,10 @@ function Room() {
     const [user, setUser] = useState("");
     const [added, setAdded] = useState("");
     let {roomId} = useParams();
+    let username = jwt_decode(localStorage.getItem('accessToken')).username;
     let navigate = useNavigate();
 
     // get username from parameters (url)
-    const chatId = roomId.split('-')[0]
-    const username = roomId.split('-')[1]
 
     // call express API server and get messages from ID
     useEffect(() => {
@@ -24,16 +24,17 @@ function Room() {
 
     // call express API server on port 3001 (post) to create message
     const APIPost = () => {
-        Axios.post('http://localhost:3001/api/createMessage', {userName: username, message: msg, chatID: chatId})
+        
+        Axios.post('http://localhost:3001/api/createMessage', {userName: username, message: msg, chatID: roomId})
         window.location.reload(true)
     }
 
     // call express API server to add user
     const APIAdd = () => {
         if (/^[A-Za-z0-9]*$/.test(added)) {
-            Axios.get(`http://localhost:3001/api/getTitle/${chatId}`).then((data) => {
-                let usertmp = data.data[0].users + ", " + added;
-                Axios.post('http://localhost:3001/api/updateRoom', {userName: usertmp, chatID: chatId})
+            Axios.get(`http://localhost:3001/api/getTitle/${roomId}`).then((data) => {
+                let usertmp = data.data.users + ", " + added;
+                Axios.post('http://localhost:3001/api/updateRoom', {userName: usertmp, chatID: roomId})
             })
         }
     }
@@ -42,7 +43,7 @@ function Room() {
         // print messages and send messages
         <div className="nd">
             <div className="MessageContainer">
-                <h1 className="room-name">Room {chatId}</h1>
+                <h1 className="room-name">Room {roomId}</h1>
                 <input id="smtextbox" placeholder="Username" onChange = { (e) => {setAdded(e.target.value)}}></input>
                 <button className="buttonsm" onClick = { APIAdd }>Add to Group</button>
                 <br></br><br></br>

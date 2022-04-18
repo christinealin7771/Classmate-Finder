@@ -3,13 +3,14 @@ import Axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom"
 import './Communication.css'
+import jwt_decode from "jwt-decode";
 
 function CreatePost() {
     const [tit,setTitle] = useState("");
     const [loc,setLocation] = useState("");
     const [bod,setBody] = useState("");
     const [sched,setTime] = useState("");
-    let aut = "nick d";
+    let aut = jwt_decode(localStorage.getItem('accessToken')).username;
     let navigate = useNavigate();
 
     // call express API server on port 3001 (post)

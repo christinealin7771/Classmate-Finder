@@ -2,13 +2,15 @@ import React,{useEffect,useState} from 'react'
 import {useParams, useNavigate} from "react-router-dom"
 import Axios from 'axios'
 import './Communication.css'
+import jwt_decode from "jwt-decode";
 
 function Post() {
     const [detailsList,setDetailsList] = useState([])
     const [commentsList,setCommentsList] = useState([])
     const [msg, setMessage] = useState("");
     let {postId} = useParams();
-    let username = "tomato";
+    let username = jwt_decode(localStorage.getItem('accessToken')).username;
+    console.log(username);
     let author = "";
 
     let navigate = useNavigate();
@@ -33,6 +35,7 @@ function Post() {
     const APIDelete = () => {
         Axios.post('http://localhost:3001/api/deletePost', {id: postId})
         navigate(`/posts`, {replace: true});
+        window.location.reload(true)
     }
 
     return (
