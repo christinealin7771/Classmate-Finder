@@ -67,7 +67,7 @@ const Preferences = () => {
     console.log(data);
     axios.post("http://localhost:3001/preferences", data).then(() => {
       console.log(data);
-      navigate("/", ({replace: true}));
+      navigate(`/profile/${decoded.id}`, {replace: true});
     })
     
   }
@@ -281,7 +281,7 @@ const Preferences = () => {
         <br></br>
         <br></br> 
 
-        <button onClick={onSubmit}>Update Preference</button>
+        <button onClick={onSubmit}>Save Preference</button>
     </div>
   )
 

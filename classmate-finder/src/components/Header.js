@@ -50,7 +50,7 @@ const Header = () => {
                        
                         {/* <Link to="/profile/:id">Profile</Link> */}
                         <a onClick ={profileClick}>Profile</a>
-                        <a onClick ={preferencesClick}>Preferences</a>
+                        <a onClick ={preferencesClick}>Preference Form</a>
                         <button onClick={logout}>Logout</button>
                     </>
                 )}
