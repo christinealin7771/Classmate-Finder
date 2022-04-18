@@ -1,11 +1,20 @@
-.match matchText{
-  display: flex;
-  align-items: center;
-  width: 45%;
+.match {
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  border-spacing: 300px;
+  width: 300px;
+  height: 180px;
+  font-weight: bold;
 }
 
+/* .match matchText{
+  display: flext;
+  align-items: center;
+  width: 45%;
+} */
+
 .match button {
-  display: table; 
+  margin: auto; 
   margin-top: 15px;
   clear: both; 
   width: 160px;
