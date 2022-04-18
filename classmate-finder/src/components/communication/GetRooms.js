@@ -18,6 +18,12 @@ function GetRooms() {
         });
     },[userName]);
 
+    // call express API server on port 3001 (post) to create comment
+    const APICreate = () => {
+        Axios.post('http://localhost:3001/api/createRoom', {usersList: userName})
+        window.location.reload(true)
+    }
+
     // display all the rooms that user is a part of
     // should be able to click on the room and be sent to a new page with the messages
     return (
@@ -25,10 +31,10 @@ function GetRooms() {
             <div className="RoomContainer">
                 <h2>Open Rooms</h2>
                 <ul>
-                    <p>Create Room</p>
+                    <p onClick={APICreate}>Create Room</p>
                     { roomList.map((val, key) => {
                         return (
-                            <p onClick= {() => {(navigate(`/room/${val.chatid}-${userName}`, {replace: true}))}}>{val.users}</p>
+                            <p onClick= {() => {(navigate(`/room/${val.chatid}`, {replace: true}))}}>{val.users}</p>
                         )})
                     }
                 </ul>

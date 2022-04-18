@@ -30,6 +30,13 @@ const Header = () => {
         navigate(`/preferences/${decoded.id}`, {replace: true});
         //navigate(`/preferences/`, {replace: true});
     }
+
+    const chatClick = () => {
+        const token = localStorage.getItem('accessToken')
+        const decoded = jwt_decode(token);
+        navigate(`/rooms/${decoded.username}`, {replace: true});
+        //navigate(`/preferences/`, {replace: true});
+    }
    
 
 
@@ -38,8 +45,6 @@ const Header = () => {
             <h1>Classmate Finder</h1>
            
             <div className="links"> 
-                <Link to="/posts">Posts</Link>
-                <Link to="/rooms/nicholas">Messages</Link>
                 
                 {!authState ? (
                     <>
@@ -50,6 +55,8 @@ const Header = () => {
                     <>
                        
                         {/* <Link to="/profile/:id">Profile</Link> */}
+                        <Link to="/posts">Posts</Link>
+                        <a onClick ={chatClick}>Messages</a>
                         <a onClick ={profileClick}>Profile</a>
                         <a onClick ={preferencesClick}>Preference Form</a>
                         <button onClick={logout}>Logout</button>
