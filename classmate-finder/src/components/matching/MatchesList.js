@@ -23,9 +23,9 @@ const MatchesList = () => {
     })
   }, [])
   useEffect(() => {
-    console.log("teststssts")
-    axios.get("http://localhost:3001/prefereneces/all").then((response) => {
-      console.log(allPreferences); 
+    axios.get("http://localhost:3001/preferences/all").then((response) => {
+      console.log(response.data);
+
       setAllPreferences(response.data); 
       var length = allPreferences.length; 
       for (var i = 0; i <length; i++) {
@@ -53,10 +53,8 @@ const MatchesList = () => {
       allPreferences.sort(function(a, b) {
         return a.matchScore - b.matchScore; 
       })
-
-
     });
-  }, []); 
+  }, []);
   
   return (
     <div>

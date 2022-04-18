@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
-import './Preferences.css'
+import './EditPreferences.css'
 import jwt_decode from 'jwt-decode'; 
 import { yearOptions, majorOptions, personalityOptions, studyHabitOptions, studyTimeOptions } from './PreferenceOptions';
 
