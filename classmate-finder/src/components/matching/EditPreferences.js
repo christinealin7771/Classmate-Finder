@@ -11,6 +11,7 @@ const EditPreferences = () => {
   let navigate = useNavigate();
   let {id} = useParams();
  
+  const [name, setName] = useState("")
   const [year, setYear] = useState("");
   const [major, setMajor] = useState("");
   const [personality, setPersonality] = useState("");
@@ -19,6 +20,7 @@ const EditPreferences = () => {
 
   useEffect (() => {
     axios.get(`http://localhost:3001/preferences/${id}`).then((response)=>{
+      setName(response.data[0].name); 
       setYear(response.data[0].year);
       setMajor(response.data[0].major);
       setStudyHabit(response.data[0].studyHabit)
@@ -26,6 +28,10 @@ const EditPreferences = () => {
       setStudyTime(response.data[0].studyTime)
     })
   }, []);
+  
+  const nameHandler = (event) => {
+    setName(event.target.value) 
+  }
 
   const yearHandler = (event) => {
     setYear(event.target.value)
@@ -52,6 +58,7 @@ const EditPreferences = () => {
     const decoded = jwt_decode(token);
 
     const data = {
+      name: name, 
       year: year,
       major: major,
       personality: personality,
@@ -105,6 +112,12 @@ const EditPreferences = () => {
     
     <form> 
         <h1 userName="preference">Edit Preference Form</h1>
+        <label for="name">Preferred Display Name: </label>
+        <input type="text" onChange={nameHandler} value={name}/> 
+
+        <br></br>
+        <br></br>
+
         <label for="year">Class year: </label>
         <select 
           name="year-select" 
