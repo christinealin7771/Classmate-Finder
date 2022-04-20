@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-import {useParams} from "react-router-dom"
 import './Communication.css'
 import jwt_decode from "jwt-decode";
 
@@ -35,7 +34,7 @@ function CreatePost() {
                 <h2>Time (MM-DD-YYYY HH:MM:SS)</h2>
                 <textarea id="textbox" placeholder="MM-DD-YYYY HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
                 <br></br>
-                <button className="buttongr" onClick = { APIPost }>Create Post</button>
+                <button className="buttongr" onClick = {APIPost}>Create Post</button>
                 <button className="button" onClick= {() => {navigate("/posts", {replace: true})}}>Go Back</button>
             </div>
         </div>
