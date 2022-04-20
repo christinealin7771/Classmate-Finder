@@ -18,6 +18,7 @@ import Post from './components/communication/Post';
 import Room from './components/communication/Room';
 import UpdatePost from './components/communication/UpdatePost';
 import GetPosts from './components/communication/GetPosts';
+import Welcome from './components/Welcome';
 
 import { AuthContext } from './AuthContext';
 import { useState, useEffect } from 'react';
@@ -40,6 +41,7 @@ function App() {
       <Router>
       <Header/>
        <Routes>
+          <Route path="/" element={<Welcome/>}></Route>
          <Route path="/profile/:id" element={<Profile/>}></Route>
          <Route path="/changepassword" element={<ChangePassword/>}></Route>
          <Route path="/changeusername" element={<ChangeUsername/>}></Route>
