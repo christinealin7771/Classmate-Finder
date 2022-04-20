@@ -17,6 +17,8 @@ function CreatePost() {
     const APIPost = () => {
         // need to regex to make sure it doesnt break the server
         Axios.post('http://localhost:3001/api/createPost', {title: tit, author: aut, location: loc, body : bod, time : sched})
+        navigate("/posts", {replace: true});    
+        window.location.reload(true);
     }
 
     return (
@@ -30,7 +32,7 @@ function CreatePost() {
                 <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setLocation(e.target.value)}}/>
                 <h2>Body</h2>
                 <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setBody(e.target.value)}}/>
-                <h2>Time</h2>
+                <h2>Time (MM-DD-YYYY HH:MM:SS)</h2>
                 <textarea id="textbox" placeholder="MM-DD-YYYY HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
                 <br></br>
                 <button className="buttongr" onClick = { APIPost }>Create Post</button>
