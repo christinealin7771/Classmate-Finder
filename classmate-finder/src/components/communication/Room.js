@@ -35,6 +35,7 @@ function Room() {
             Axios.get(`http://localhost:3001/api/getTitle/${roomId}`).then((data) => {
                 let usertmp = data.data.users + ", " + added;
                 Axios.post('http://localhost:3001/api/updateRoom', {userName: usertmp, chatID: roomId})
+                window.location.reload(true)
             })
         }
     }

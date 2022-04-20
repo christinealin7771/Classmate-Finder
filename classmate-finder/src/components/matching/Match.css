@@ -1,0 +1,25 @@
+.match {
+  text-align: center;
+  border: 2px solid rgb(9, 14, 81);
+  border-spacing: 300px;
+  width: 300px;
+  height: 180px;
+  font-weight: bold;
+}
+
+.match button {
+  margin: auto; 
+  margin-top: 15px;
+  clear: both; 
+  width: 160px;
+  height: 80px;
+  border: none;
+  background-color:  dodgerblue;
+  border-radius: 5px;
+  color: white;
+}
+
+.match button:hover {
+    cursor: pointer;
+    background-color: lightblue;
+  }

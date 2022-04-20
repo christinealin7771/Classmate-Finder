@@ -16,6 +16,8 @@ function UpdatePost() {
     // call express API server on port 5051 (post)
     const APIPost = () => {
         Axios.post('http://localhost:5051/api/updatePost', {id: postId, title: tit, location: loc, body : bod, time : sched})
+        navigate("/posts", {replace: true});    
+        window.location.reload(true);
     }
 
     return (
@@ -29,8 +31,8 @@ function UpdatePost() {
                 <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setLocation(e.target.value)}}/>
                 <h2>Body</h2>
                 <textarea id="textbox" placeholder="Enter text." onChange = { (e) => {setBody(e.target.value)}}/>
-                <h2>Time</h2>
-                <textarea id="textbox" placeholder="YYYY-MM-DD HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
+                <h2>Time (MM-DD-YYYY HH:MM:SS)</h2>
+                <textarea id="textbox" placeholder="MM-DD-YYYY HH:MM:SS" onChange = { (e) => {setTime(e.target.value)}}/>
                 <br></br>
                 <button className="buttongr" onClick = { APIPost }>Update Post</button>
                 <button className="button" onClick= {() => {(navigate(`/posts`, {replace: true}))}}>Go Back</button>

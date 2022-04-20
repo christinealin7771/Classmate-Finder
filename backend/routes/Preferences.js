@@ -2,17 +2,10 @@ const express = require('express')
 const router = express.Router()
 const { Preferences } = require('../models');
 
-router.get("/", async (req, res) =>{
+router.get("/all", async (req, res) =>{
     const listOfPreferences = await Preferences.findAll()
     res.json(listOfPreferences);
 });
-
-// router.get("byId/:id", async (req,res) => {
-//     const id = req.params.id; 
-//     const preferenceById = await Preferences.findByPk(id, {
-//         attributes: {exclude: ["password"]}
-//     })
-// }); 
 
 router.get("/:userId", async (req,res) => {
     const userId = req.params.userId;
@@ -22,10 +15,8 @@ router.get("/:userId", async (req,res) => {
     res.json(preferences)
 })
 
-
-
 router.post("/", async (req, res) => {
-    const {name, year, major, personality, studyHabit, timeStudy, UserId} = req.body;
+    const {name, year, major, personality, studyHabit, studyTime, UserId} = req.body;
     // const username = 
     
     Preferences.create({
@@ -34,7 +25,7 @@ router.post("/", async (req, res) => {
         major: major,
         personality: personality,
         studyHabit: studyHabit,
-        timeStudy: timeStudy,
+        studyTime: studyTime,
         UserId: UserId
     })
     
@@ -42,13 +33,14 @@ router.post("/", async (req, res) => {
 });
 
 router.put('/updatePreference', async (req, res) => {
-    const {year, major, personality, studyHabit, timeStudy, UserId} = req.body;
+    const {name, year, major, personality, studyHabit, studyTime, UserId} = req.body;
     Preferences.update({
+        name: name,
         year: year,
         major: major,
         personality: personality,
         studyHabit: studyHabit,
-        timeStudy: timeStudy,
+        studyTime: studyTime,
         UserId: UserId
     }, {where: {UserId: UserId}})
 

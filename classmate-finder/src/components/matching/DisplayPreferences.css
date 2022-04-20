@@ -1,13 +1,13 @@
-.preferenceForm {
+.preferenceDisplay {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
     height: 100vh;
     padding-top: 10px;
-}
-  
-.preferenceForm button {
+  }
+
+.preferenceDisplay button {
     margin-top: 15px;
     height: 40px;
     border: none;
@@ -16,7 +16,7 @@
     color: white;
 }
 
-.preferenceForm button:hover {
+.preferenceDisplay button:hover {
     cursor: pointer;
     background-color: lightblue;
   }
